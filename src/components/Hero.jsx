@@ -96,7 +96,7 @@ export default function Hero() {
                 LinkedIn
               </a>
               <a
-                href="/assets/Masud_Rana_Mushfiq_Resume%20.pdf"
+                href={`${import.meta.env.BASE_URL}assets/Masud_Rana_Mushfiq_Resume%20.pdf`}
                 download
                 className="hero-link hero-link--resume"
                 aria-label="Resume"

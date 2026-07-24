@@ -2,13 +2,15 @@ import { useState } from "react";
 import { profile, projectCategories, projects } from "../data";
 import { useReveal } from "../hooks/useReveal";
 
+const BASE = import.meta.env.BASE_URL;
+
 const projectImageMap = {
-  trylense: "/assets/TryLense.png",
-  "online-judge": "/assets/Online Judge.png",
-  "student-management-p1": "/assets/Student Management System p1.webp",
-  "laravel-blood-donation-backend": "/assets/Blood Donation Backend.png",
-  "ticket-booking-app": "/assets/Ticket Booking Mobile App.png",
-  "task-poster-app": "/assets/Task Poster.jpg",
+  trylense: `${BASE}assets/TryLense.png`,
+  "online-judge": `${BASE}assets/Online Judge.png`,
+  "student-management-p1": `${BASE}assets/Student Management System p1.webp`,
+  "laravel-blood-donation-backend": `${BASE}assets/Blood Donation Backend.png`,
+  "ticket-booking-app": `${BASE}assets/Ticket Booking Mobile App.png`,
+  "task-poster-app": `${BASE}assets/Task Poster.jpg`,
 };
 
 export default function Projects() {
@@ -115,7 +117,7 @@ export default function Projects() {
                   )}
                   {project.slug && (
                     <a
-                      href={`/projects/${project.slug}.html`}
+                      href={`${BASE}projects/${project.slug}.html`}
                       className="project-btn project-btn--outline"
                     >
                       Details
