@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Task Poster App — A React Native app for posting and managing tasks."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Task Poster App — Masud Rana Mushfiq</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #f2f5f8;
+        color: #0c1824;
+        font-family:
+          "Manrope",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      header {
+        padding: 36px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 14.5px;
+        color: #fff;
+        text-decoration: none;
+        background: #0e6ba8;
+        padding: 12px 26px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(14, 107, 168, 0.25);
+        transition:
+          transform 0.25s,
+          background 0.25s,
+          box-shadow 0.25s;
+      }
+      .back-link:hover {
+        background: #0a5183;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(14, 107, 168, 0.35);
+      }
+      .project-page {
+        padding: 20px 0 80px;
+      }
+      .project-hero {
+        margin-bottom: 48px;
+      }
+      .project-type {
+        display: inline-block;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0e6ba8;
+        background: #ddebf5;
+        padding: 4px 14px;
+        border-radius: 6px;
+        margin-bottom: 14px;
+      }
+      .project-hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(34px, 5vw, 52px);
+        font-weight: 640;
+        letter-spacing: -0.015em;
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .project-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .project-meta span {
+        display: inline-block;
+        color: #0e6ba8;
+        background: #ddebf5;
+        padding: 4px 14px;
+        border-radius: 6px;
+      }
+      .project-meta .sep {
+        display: none;
+      }
+      .project-img-wrap {
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #e9eef3;
+        border: 1px solid #d5dfe8;
+        margin-bottom: 40px;
+        aspect-ratio: 4 / 3;
+      }
+      .project-img-wrap img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .project-img-wrap .project-links {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        margin-top: 0;
+      }
+      .section-title {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(20px, 2.8vw, 26px);
+        font-weight: 620;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        color: #0e6ba8;
+      }
+      .desc-text {
+        color: #334556;
+        font-size: 16.5px;
+        line-height: 1.75;
+        margin-bottom: 40px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #d5dfe8;
+        border-radius: 16px;
+        padding: 28px;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(12, 24, 36, 0.08);
+      }
+      .card h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 18px;
+        font-weight: 620;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .card h3 .icon {
+        font-size: 22px;
+      }
+      .card p,
+      .card li {
+        color: #334556;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .card ul {
+        list-style: none;
+        padding: 0;
+      }
+      .card ul li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+      .card ul li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #0e6ba8;
+        font-weight: 700;
+      }
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 26px;
+        border-radius: 999px;
+        font-size: 14.5px;
+        font-weight: 700;
+        text-decoration: none;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          background 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        background: #fff;
+        color: #334556;
+        border: 1.5px solid #d5dfe8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .btn-ghost:hover {
+        border-color: #0c1824;
+        color: #0c1824;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+      .btn-primary {
+        background: #fff;
+        color: #0e6ba8;
+        border: 1.5px solid #0e6ba8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .btn-primary:hover {
+        background: #0e6ba8;
+        color: #fff;
+        border-color: #0e6ba8;
+        box-shadow: 0 6px 18px rgba(14, 107, 168, 0.25);
+      }
+      footer {
+        padding: 30px 0;
+        text-align: center;
+        color: #5e7182;
+        font-size: 13px;
+        border-top: 1px solid #d5dfe8;
+      }
+      footer a {
+        color: #0e6ba8;
+        text-decoration: none;
+      }
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="/" class="back-link">&larr; Back to Portfolio</a>
+      </header>
+      <main class="project-page">
+        <div class="project-hero">
+          <span class="project-type">Mobile App</span>
+          <h1>Task Poster App</h1>
+          <div class="project-meta">
+            <span>2025</span><span class="sep"></span><span>App</span>
+            <span class="sep"></span
+            ><span>React Native · TypeScript · Expo · Firebase</span>
+          </div>
+        </div>
+
+        <div class="project-img-wrap">
+          <img src="/assets/Task%20Poster.jpg" alt="Task Poster App" />
+          <div class="project-links">
+            <a
+              href="https://github.com/MasudRanaMushfiq/Task_Poster_App"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-ghost"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path
+                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                />
+                <path
+                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                />
+              </svg>
+              Live
+            </a>
+          </div>
+        </div>
+
+        <p class="desc-text">
+          A React Native mobile app built with Expo and Firebase for posting and
+          managing tasks — real-time sync, cross-platform support, and a clean
+          task workflow.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 2L2 18h16L10 2z" />
+                <path d="M10 8v4" />
+                <path d="M10 14.5V15" />
+              </svg>
+              Problem
+            </h3>
+            <p>
+              Teams and individuals needed a simple mobile tool to post, assign,
+              and track tasks without the overhead of heavyweight project
+              management tools.
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10 2a5 5 0 0 0-3 9c0 2 1 3 1 4h4c0-1 1-2 1-4a5 5 0 0 0-3-9z"
+                />
+                <path d="M8 15h4" />
+              </svg>
+              Solution
+            </h3>
+            <p>
+              Designed a lightweight task management mobile app using React
+              Native and Firebase, enabling users to create, update, and track
+              tasks with real-time sync across devices.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 40px">
+          <h3>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5L10 2z"
+              />
+            </svg>
+            Key Features
+          </h3>
+          <ul>
+            <li>Task creation and assignment</li>
+            <li>Real-time sync with Firebase</li>
+            <li>Cross-platform (Expo)</li>
+            <li>Task status tracking</li>
+            <li>Clean, minimal interface</li>
+          </ul>
+        </div>
+
+        <h2 class="section-title">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M2 10l8 5 8-5" />
+            <path d="M2 14l8 5 8-5" />
+            <path d="M2 6l8 5 8-5" />
+            <path d="M10 1L2 6l8 5 8-5-8-5z" />
+          </svg>
+          Challenges & Engineering Deep Dive
+        </h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2c-1 3-4 4-4 8 0 2 1 3 3 3s3-2 3-4c0-4-2-7-2-7z" />
+                <path
+                  d="M8 12c-1 1-2 2-2 4 0 2 1.5 3 4 3s4-2 4-4c0-1-.5-2-1-3"
+                />
+              </svg>
+              Distributed Data Consistency Across Collections
+            </h3>
+            <p>
+              The app spans five Firestore collections — <code>users</code>,
+              <code>worked</code>, <code>complains</code>,
+              <code>notifications</code>, and <code>admins</code>. A single
+              action like "accept a task" must update the user's
+              <code>acceptedWorks</code> array, flip the
+              <code>worked</code> document status to <code>"accepted"</code>,
+              write a notification, and conditionally pull the poster's contact
+              info.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Designed atomic
+              <code>Promise.all</code> chains for multi-document updates and
+              used Firestore's built-in <code>arrayUnion</code> /
+              <code>arrayRemove</code> helpers to avoid race conditions. Each
+              write is wrapped in try/catch with user-facing
+              <code>Alert.alert</code> fallbacks so partial failures never leave
+              the UI in an inconsistent state.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 5h12" />
+                <path d="M10 5v11" />
+                <path d="M3 16h14" />
+                <path d="M6 5l4 5 4-5" />
+              </svg>
+              Weighted Rating System Without a Backend
+            </h3>
+            <p>
+              Tasks required a fair, tamper-resistant rating system. The naive
+              average — summing all ratings and dividing by count — would let a
+              single new rating swing the score unfairly. I needed a weighted
+              running average that stayed accurate even with hundreds of
+              ratings, all computed client-side in Firestore.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Implemented the classic weighted
+              average formula:
+              <code
+                >newRating = (oldRating &times; oldRatingCount + newRating) /
+                (oldRatingCount + 1)</code
+              >. Each rating submission is an idempotent transaction — the
+              <code>reviews</code> array uses <code>arrayUnion</code> to prevent
+              duplicates, and the <code>status</code> field is flipped to
+              <code>"completed"</code> atomically in the same
+              <code>updateDoc</code> call. This guarantees exactly one rating
+              per completed work, no matter how many times the button is
+              pressed.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 8a7 7 0 0 0-12-3" />
+                <path d="M4 12a7 7 0 0 0 12 3" />
+                <path d="M16 3v5h-5" />
+                <path d="M4 17v-5h5" />
+              </svg>
+              Task Lifecycle State Machine
+            </h3>
+            <p>
+              A task moves through a strict state machine:
+              <code>pending</code> &rarr; <code>accepted</code> &rarr;
+              <code>completed</code>. Each transition triggers cascading side
+              effects — contact info disclosure, notification creation, wallet
+              implications, and UI re-renders across multiple screens.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Encoded the state machine
+              directly in Firestore queries. Screens like
+              <code>pendingwork.tsx</code> filter
+              <code>WHERE status == "accepted"</code> while
+              <code>completedwork.tsx</code> filters
+              <code>WHERE status == "completed"</code>. The "Complete" button is
+              gated behind a secondary <code>acceptedBy</code> check so only the
+              assigned user can transition the state. This keeps the logic
+              declarative and eliminates hidden state bugs.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="10" r="2" />
+                <path d="M6 6a6 6 0 0 1 8 0" />
+                <path d="M3 3a10 10 0 0 1 14 0" />
+              </svg>
+              Real-Time Feed Without Over-fetching
+            </h3>
+            <p>
+              The home screen uses Firestore <code>onSnapshot</code> to show new
+              tasks instantly. Without careful management, every keystroke or
+              navigation event could trigger a new listener — draining the
+              user's data plan and hitting Firestore read quotas.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Attached a single
+              <code>onSnapshot</code> query in a <code>useEffect</code> with an
+              empty dependency array so the listener is registered exactly once
+              per mount. The cleanup function (<code>unsubscribe</code>) is
+              called on unmount, preventing zombie listeners. For the
+              category-filtered view, I combined
+              <code>where("category", "==", selectedCategory)</code> with
+              compound queries to minimise document scans.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="5" y="2" width="10" height="16" rx="2" />
+                <path d="M8 14h4" />
+              </svg>
+              Cross-Platform Polish Without Fragmentation
+            </h3>
+            <p>
+              Android and iOS handle status bars, safe areas, and shadows
+              completely differently. A hardcoded padding that looks perfect on
+              iOS can overlap the status bar on Android, and
+              <code>elevation</code> (Android) has no effect on iOS where
+              <code>shadowOffset</code>
+              is required instead.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Added
+              <code>Platform.OS</code> checks in every screen's header style.
+              For Android:
+              <code>paddingTop: StatusBar.currentHeight || 0</code>. For iOS: a
+              static <code>paddingTop: 20</code> (standard safe-area inset).
+              Shadow effects use both <code>elevation</code> (Android) and
+              <code
+                >shadowColor / shadowOffset / shadowOpacity / shadowRadius</code
+              >
+              (iOS) in the same style block, so the visual result is identical
+              on both platforms.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 17V10" />
+                <path d="M8 17V6" />
+                <path d="M13 17v-5" />
+                <path d="M18 17V3" />
+              </svg>
+              Admin Aggregation Without SQL
+            </h3>
+            <p>
+              Firestore doesn't support <code>GROUP BY</code> or
+              <code>COUNT(*)</code> — yet the admin dashboard needs real-time
+              stats: total users, active posts, pending jobs, completed jobs,
+              and complaint volume. Running 5+ separate <code>getDocs</code>
+              queries on every visit is slow and expensive.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Batched all aggregation queries
+              inside a single <code>fetchStats</code> async function using
+              <code>Promise.all</code> for parallel execution. Each stat runs a
+              targeted <code>where</code> filter (e.g.,
+              <code>where("status", "==", "active")</code>) so Firestore only
+              scans matching documents. The loading state is managed with a
+              single <code>useState</code> toggle, and errors are caught
+              globally so a single failed query doesn't crash the entire
+              dashboard.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="5" y="9" width="10" height="9" rx="1" />
+                <path d="M7 9V6a3 3 0 0 1 6 0v3" />
+                <circle cx="10" cy="14" r="1" />
+                <path d="M10 14v1" />
+              </svg>
+              Contact Privacy by Design
+            </h3>
+            <p>
+              Phone numbers and contact details are sensitive — they shouldn't
+              be visible to everyone browsing the task feed. But once a user
+              accepts a task, they need a way to reach the poster. The challenge
+              was balancing transparency with privacy without a proper backend
+              or role-based API gateway.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Contact info is never displayed
+              in the task feed or user list. It's only revealed through an
+              <code>Alert.alert</code> triggered by a "Contact" button that
+              appears <em>after</em> a task has been accepted. The phone number
+              is fetched via a direct <code>getDoc</code> lookup on the poster's
+              user document — so it's gated behind both authentication
+              <em>and</em> an accepted-work relationship, not just client-side
+              UI hiding.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M11 2H4a1 1 0 0 0-1 1v5" />
+                <path d="M3 8h3a2 2 0 0 1 0 4H3" />
+                <path d="M3 12v4a1 1 0 0 0 1 1h6" />
+                <path d="M14 2a2 2 0 0 0-2 2v1a2 2 0 0 0 0 4v7a2 2 0 0 0 2 2" />
+              </svg>
+              Complaints & Resolution Workflow
+            </h3>
+            <p>
+              Building a complete complaint system — user submits &rarr; admin
+              reviews &rarr; admin sends feedback &rarr; status marked "solved"
+              — introduced coupling between screens and required relational
+              lookups (fetching user names by <code>fromUserId</code>
+              for each complaint). Error handling had to span three separate
+              screens.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Used a <code>for...</code> loop
+              with individual <code>getDoc</code> calls to resolve
+              <code>fromUserId</code> to <code>fullName</code> when fetching
+              complaints (the collection is small so <code>N+1</code> is
+              acceptable). The status toggle (<code>"pending"</code> &rarr;
+              <code>"solved"</code>) is handled by <code>updateDoc</code> inside
+              the feedback submission handler. Complaints are sorted client-side
+              with <code>sort()</code> so admins see pending issues first.
+            </p>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <a href="/">Back to Masud Rana Mushfiq's Portfolio</a>
+      </footer>
+    </div>
+  </body>
+</html>

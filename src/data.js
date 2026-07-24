@@ -1,0 +1,231 @@
+export const profile = {
+  name: "Masud Rana Mushfiq",
+  firstName: "Masud Rana",
+  lastName: "Mushfiq",
+  university: "University of Rajshahi",
+  tagline:
+    "Building elegant solutions at the intersection of web development and software engineering.",
+  github: "https://github.com/MasudRanaMushfiq",
+  linkedin: "https://www.linkedin.com/in/masudranamushfiq/",
+  email: "masudranaorg71@gmail.com",
+  availability: "Open to internships & opportunities",
+};
+
+export const contact = {
+  email: "masudranaorg71@gmail.com",
+  github: "https://github.com/MasudRanaMushfiq",
+  linkedin: "https://www.linkedin.com/in/masudranamushfiq/",
+  medium: "https://medium.com/@masudranamushfiq",
+  youtube: "https://youtube.com/@masudranamushfiq",
+};
+
+export const workingPreferences = {
+  timezone: "GMT+6 · base 09:00–17:00 flexible shift for cross-region overlap",
+  overlap: "EU + UK — ~4h | US — async-first; ~1–2h on overlap days",
+  comms: "Async-first · Loom · written RFCs · EOD standups · GitHub PRs as the source of truth",
+  languages: "English (working) · Bangla (native)",
+};
+
+export const about = {
+  heading: ["Passionate builder,", "curious learner."],
+  paragraphs: [
+    "I'm Masud Rana Mushfiq, a Computer Science undergraduate at the University of Rajshahi, Bangladesh. I'm driven by a deep curiosity about how technology can solve real-world problems — from crafting responsive frontend interfaces to building robust backend systems.",
+    "My journey started with the fundamentals — C, C++, and data structures — and has grown into a passion for full-stack web development and mobile applications. I enjoy turning complex ideas into working, polished software.",
+    "Beyond coding, I love discussing frontend architecture, object-oriented design patterns, and modern web technologies. I believe the best engineers never stop asking \"why?\" and \"how can this be better?\"",
+  ],
+  stats: [
+    { value: "5+", label: "Full-stack projects built" },
+    { value: "4", label: "Years of CSE study" },
+    { value: "6", label: "Programming languages" },
+    { value: "3", label: "Frameworks mastered" },
+  ],
+};
+
+export const skills = [
+  {
+    group: "Languages",
+    color: "#0e6ba8",
+    items: ["C", "C++", "Java", "JavaScript", "TypeScript", "Python"],
+  },
+  {
+    group: "Frontend & Mobile",
+    color: "#0d8a7a",
+    items: ["HTML5", "CSS3", "React", "React Native", "Expo", "Chrome Extensions"],
+  },
+  {
+    group: "Data",
+    color: "#7c5ea3",
+    items: ["Pandas", "NumPy", "DSA"],
+  },
+  {
+    group: "Tools & Systems",
+    color: "#b86b3a",
+    items: ["Git", "GitHub", "Firebase", "Laravel", "LaTeX", "OOP"],
+  },
+];
+
+export const projectCategories = ["All", "Backend", "Frontend", "App"];
+
+export const projects = [
+  {
+    title: "TryLense",
+    slug: "trylense",
+    type: "Website",
+    description:
+      "An online eyewear shop built for TryLense, with Meta Pixel setup, anti-fraud controls, and a virtual try-on flow for each product.",
+    image: "TryLense.png",
+    tags: ["React", "Vite", "Meta Pixel", "Virtual Try-On"],
+    github: "#",
+    live: "https://trylense.com/",
+    year: "2026",
+    category: "Frontend",
+    problem:
+      "The store was getting a large volume of fake orders, Meta was charging for those bad conversions, and buyers needed a better way to preview eyewear before purchasing.",
+    solution:
+      "Built the TryLense storefront, set up Meta Pixel tracking, moved abnormal orders into a fake-order flow, added blocking logic to stop repeat bad users, and implemented a virtual try-on experience using face tracking.",
+    features: [
+      "Online eyewear shop experience",
+      "Meta Pixel and conversion tracking setup",
+      "Abnormal-order detection and fake-order handling",
+      "User blocking for repeat fraudulent activity",
+      "Virtual try-on with selfie camera or uploaded image",
+      "Face-tracked eyewear preview with download and manual adjustment controls",
+    ],
+  },
+  {
+    title: "Online Judge",
+    slug: "online-judge",
+    type: "Web Application",
+    description:
+      "A minimal online judge that compiles and runs C / C++ code inside a Docker sandbox. Write code in the browser, hit Run, and see the output — all without leaving the editor.",
+    image: "online-judge.svg",
+    tags: ["JavaScript", "Docker", "Node.js"],
+    github: "https://github.com/MasudRanaMushfiq/Online-Judge",
+    live: "#",
+    year: "2026",
+    category: "Backend",
+    problem:
+      "Competitive programmers and students needed a quick way to test C/C++ code snippets without setting up a local compiler or switching contexts. Existing online judges were either too heavy or required account creation.",
+    solution:
+      "Built a lightweight, browser-based code execution environment using Node.js with Docker sandboxing. Users write code in a web editor, hit Run, and get real-time output — no setup, no account needed.",
+    features: [
+      "In-browser code editor with syntax highlighting",
+      "Docker-based sandboxed execution for safety",
+      "Supports C and C++ compilation",
+      "Real-time output streaming",
+      "Minimal, distraction-free UI",
+    ],
+  },
+  {
+    title: "Student Management System",
+    slug: "student-management-p1",
+    type: "Web Application",
+    description:
+      "A student management system with authentication via Laravel Breeze, role-based access control, and full student CRUD with an admin dashboard.",
+    image: "student-management.svg",
+    tags: ["Laravel", "PHP", "Breeze", "RBAC"],
+    github: "https://github.com/MasudRanaMushfiq/Student-Management-P1",
+    live: "#",
+    year: "2026",
+    category: "Backend",
+    problem:
+      "Educational institutions needed a streamlined system to manage student records, user roles, and administrative tasks. Manual processes were error-prone and time-consuming.",
+    solution:
+      "Developed a full-stack student management system with Laravel Breeze authentication, role-based access control (admin/teacher/student), and complete CRUD operations for student records.",
+    features: [
+      "Laravel Breeze authentication scaffold",
+      "Role-based access control (Admin, Teacher, Student)",
+      "Full student CRUD with validation",
+      "Admin dashboard with statistics",
+      "Responsive Tailwind CSS interface",
+    ],
+  },
+  {
+    title: "Laravel Blood Donation Backend",
+    slug: "laravel-blood-donation-backend",
+    type: "Backend API",
+    description:
+      "A RESTful Laravel backend for blood donation management — donor CRUD, blood requests, emergency handling, and location-based filtering with a web admin dashboard.",
+    image: "blood-donation.svg",
+    tags: ["Laravel", "PHP", "REST API"],
+    github: "https://github.com/MasudRanaMushfiq/Laravel-Blood-Donation-Backend",
+    live: "#",
+    year: "2026",
+    category: "Backend",
+    problem:
+      "Blood donation organizations lacked a centralized digital platform to manage donors, track blood requests, and handle emergency situations efficiently.",
+    solution:
+      "Created a RESTful API with Laravel that manages donor registrations, blood requests, emergency alerts, and location-based filtering, paired with an admin dashboard.",
+    features: [
+      "Donor registration and profile management",
+      "Blood request creation and tracking",
+      "Emergency alert system",
+      "Location-based donor filtering",
+      "Admin dashboard for oversight",
+    ],
+  },
+  {
+    title: "Ticket Booking Mobile App",
+    slug: "ticket-booking-app",
+    type: "Mobile App",
+    description:
+      "A full-featured React Native mobile app built with Expo Go and Firebase. Delivers a seamless ticket purchasing experience with real-time backend integration and cross-platform support.",
+    image: "ticket-booking.svg",
+    tags: ["React Native", "TypeScript", "Expo Go", "Firebase"],
+    github: "https://github.com/MasudRanaMushfiq/Ticket-Booking-App",
+    live: "#",
+    year: "2026",
+    category: "App",
+    problem:
+      "Event-goers needed a convenient mobile solution to browse, book, and manage tickets on the go. Existing platforms were clunky and lacked real-time updates.",
+    solution:
+      "Built a cross-platform React Native mobile app with Expo Go and Firebase backend, providing a seamless ticket browsing and purchasing experience with real-time synchronization.",
+    features: [
+      "Cross-platform (iOS & Android) with Expo Go",
+      "Firebase real-time backend integration",
+      "Ticket browsing and purchase flow",
+      "Booking history and management",
+      "Push notifications for updates",
+    ],
+  },
+  {
+    title: "Task Poster Mobile App",
+    slug: "task-poster-app",
+    type: "Mobile App",
+    description:
+      "A React Native mobile app built with Expo and Firebase for posting and managing tasks — real-time sync, cross-platform support, and a clean task workflow.",
+    image: "task-poster.svg",
+    tags: ["React Native", "TypeScript", "Expo", "Firebase"],
+    github: "https://github.com/MasudRanaMushfiq/Task_Poster_App",
+    live: "#",
+    year: "2025",
+    category: "App",
+    problem:
+      "Teams and individuals needed a simple mobile tool to post, assign, and track tasks without the overhead of heavyweight project management tools.",
+    solution:
+      "Designed a lightweight task management mobile app using React Native and Firebase, enabling users to create, update, and track tasks with real-time sync across devices.",
+    features: [
+      "Task creation and assignment",
+      "Real-time sync with Firebase",
+      "Cross-platform (Expo)",
+      "Task status tracking",
+      "Clean, minimal interface",
+    ],
+  },
+];
+
+export const education = {
+  period: "2022 — Present",
+  degree: "B.Sc. in Computer Science & Engineering",
+  school: "University of Rajshahi, Bangladesh",
+  description:
+    "Pursuing a rigorous curriculum covering data structures, algorithms, OOP, web technologies, and database systems. Actively applying coursework to real projects and open-source contributions on GitHub.",
+  coursework: [
+    "Data Structures",
+    "Algorithms",
+    "OOP",
+    "Web Dev",
+    "DSA",
+    "Database Systems",
+  ],
+};
