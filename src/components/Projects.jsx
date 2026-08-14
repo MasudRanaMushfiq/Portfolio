@@ -5,6 +5,7 @@ import { useReveal } from "../hooks/useReveal";
 const BASE = import.meta.env.BASE_URL;
 
 const projectImageMap = {
+  "ru-employee-profile-management-system": `${BASE}assets/RU Employee Profile.jpg`,
   "ru-student-management-system": `${BASE}assets/RUSMS.png`,
   trylense: `${BASE}assets/TryLense.png`,
   "online-judge": `${BASE}assets/Online Judge.png`,
@@ -96,7 +97,7 @@ export default function Projects() {
                       GitHub
                     </a>
                   )}
-                  {project.live && (
+                  {project.live && project.live !== "#" && (
                     <a
                       href={project.live}
                       target="_blank"

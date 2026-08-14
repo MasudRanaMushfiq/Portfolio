@@ -64,9 +64,42 @@ export const skills = [
   },
 ];
 
-export const projectCategories = ["All", "Backend", "Frontend", "App"];
+export const projectCategories = [
+  "All",
+  "Full-Stack",
+  "Backend",
+  "Frontend",
+  "App",
+];
 
 export const projects = [
+  {
+    title: "Rajshahi University Employee Profile System",
+    slug: "ru-employee-profile-management-system",
+    type: "Web Application",
+    description:
+      "A full-stack profile, payroll and directory platform that replaced a decade-old legacy system for 4,586 university employees — self-service profiles, an auditable payroll pipeline, CV and payslip PDFs, and a public staff directory.",
+    image: "RU Employee Profile.jpg",
+    tags: ["Laravel", "PHP", "MySQL", "React", "TypeScript"],
+    github: "#",
+    live: "http://profile.ru.ac.bd/public",
+    year: "2026",
+    category: "Full-Stack",
+    problem:
+      "The legacy system held 4,586 employees but only 1,240 had ever filled in a profile, nobody could update their own record, payroll lived in hand-distributed Excel sheets with no audit trail, and the same job role was spelled four different ways across two sources of truth.",
+    solution:
+      "Built a Laravel REST API and React + TypeScript SPA where every employee owns their own record, five administrative roles each get only their slice of authority, and the monthly payroll spreadsheet moves through an explicit staging → review → approve → publish state machine that can never write straight to an employee record.",
+    features: [
+      "Employee self-service profiles — academic and employment history, research, publications, awards and contacts",
+      "One-click A4 CV export in public and private variants",
+      "Monthly payslip download, released only after the payroll batch is published, with every download recorded",
+      "TOTP two-factor authentication with QR-code enrolment",
+      "Five scoped admin roles — Accounts, Establishment, Duty, Public relations, Super-admin",
+      "Payroll import of 25 earnings and 60+ deduction columns, reviewed as a diff before it touches any record",
+      "Salary PDFs reproducing the legacy bill layout, including the Bangla amount-in-words line",
+      "Public office directory plus a key-gated contact API for the university mobile app",
+    ],
+  },
   {
     title: "Rajshahi University Student Management System",
     slug: "ru-student-management-system",
