@@ -7,7 +7,6 @@ const BASE = import.meta.env.BASE_URL;
 const projectImageMap = {
   trylense: `${BASE}assets/TryLense.png`,
   "online-judge": `${BASE}assets/Online Judge.png`,
-  "student-management-p1": `${BASE}assets/Student Management System p1.webp`,
   "laravel-blood-donation-backend": `${BASE}assets/Blood Donation Backend.png`,
   "ticket-booking-app": `${BASE}assets/Ticket Booking Mobile App.png`,
   "task-poster-app": `${BASE}assets/Task Poster.jpg`,

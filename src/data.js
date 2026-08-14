@@ -117,30 +117,6 @@ export const projects = [
     ],
   },
   {
-    title: "Student Management System",
-    slug: "student-management-p1",
-    type: "Web Application",
-    description:
-      "A student management system with authentication via Laravel Breeze, role-based access control, and full student CRUD with an admin dashboard.",
-    image: "student-management.svg",
-    tags: ["Laravel", "PHP", "Breeze", "RBAC"],
-    github: "https://github.com/MasudRanaMushfiq/Student-Management-P1",
-    live: "#",
-    year: "2026",
-    category: "Backend",
-    problem:
-      "Educational institutions needed a streamlined system to manage student records, user roles, and administrative tasks. Manual processes were error-prone and time-consuming.",
-    solution:
-      "Developed a full-stack student management system with Laravel Breeze authentication, role-based access control (admin/teacher/student), and complete CRUD operations for student records.",
-    features: [
-      "Laravel Breeze authentication scaffold",
-      "Role-based access control (Admin, Teacher, Student)",
-      "Full student CRUD with validation",
-      "Admin dashboard with statistics",
-      "Responsive Tailwind CSS interface",
-    ],
-  },
-  {
     title: "Laravel Blood Donation Backend",
     slug: "laravel-blood-donation-backend",
     type: "Backend API",
@@ -150,7 +126,7 @@ export const projects = [
     tags: ["Laravel", "PHP", "REST API"],
     github: "https://github.com/MasudRanaMushfiq/Laravel-Blood-Donation-Backend",
     live: "#",
-    year: "2026",
+    year: "2025",
     category: "Backend",
     problem:
       "Blood donation organizations lacked a centralized digital platform to manage donors, track blood requests, and handle emergency situations efficiently.",
@@ -174,7 +150,7 @@ export const projects = [
     tags: ["React Native", "TypeScript", "Expo Go", "Firebase"],
     github: "https://github.com/MasudRanaMushfiq/Ticket-Booking-App",
     live: "#",
-    year: "2026",
+    year: "2025",
     category: "App",
     problem:
       "Event-goers needed a convenient mobile solution to browse, book, and manage tickets on the go. Existing platforms were clunky and lacked real-time updates.",
