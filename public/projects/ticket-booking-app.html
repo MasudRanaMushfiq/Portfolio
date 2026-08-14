@@ -7,12 +7,7 @@
       name="description"
       content="Ticket Booking App — A React Native mobile app for seamless ticket purchasing."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
     <title>Ticket Booking App — Masud Rana Mushfiq</title>
     <style>
       * {
@@ -282,8 +277,14 @@
 
         <div class="project-img-wrap">
           <img
-            src="../assets/Ticket%20Booking%20Mobile%20App.png"
+            src="../assets/ticket-booking-1280.webp"
+            srcset="../assets/ticket-booking-640.webp 640w, ../assets/ticket-booking-1280.webp 1280w"
+            sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1120px) calc(100vw - 64px), 1056px"
+            width="1280"
+            height="960"
             alt="Ticket Booking App"
+            decoding="async"
+            fetchpriority="high"
           />
           <div class="project-links">
             <a

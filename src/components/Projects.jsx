@@ -4,15 +4,46 @@ import { useReveal } from "../hooks/useReveal";
 
 const BASE = import.meta.env.BASE_URL;
 
+// Each shot is pre-cropped to 4:3 (the ratio .project-img-wrap renders at) and
+// encoded as WebP in two widths. The second width is capped at whatever the
+// source could supply without upscaling, which is why it varies per project.
 const projectImageMap = {
-  "ru-employee-profile-management-system": `${BASE}assets/RU Employee Profile.jpg`,
-  "ru-student-management-system": `${BASE}assets/RUSMS.png`,
-  trylense: `${BASE}assets/TryLense.png`,
-  "online-judge": `${BASE}assets/Online Judge.png`,
-  "laravel-blood-donation-backend": `${BASE}assets/Blood Donation Backend.png`,
-  "ticket-booking-app": `${BASE}assets/Ticket Booking Mobile App.png`,
-  "task-poster-app": `${BASE}assets/Task Poster.jpg`,
+  "ru-employee-profile-management-system": ["ru-employee-profile", 640, 1225],
+  "ru-student-management-system": ["rusms", 640, 1280],
+  trylense: ["trylense", 640, 1184],
+  "online-judge": ["online-judge", 640, 874],
+  "laravel-blood-donation-backend": ["blood-donation-backend", 640, 1280],
+  "ticket-booking-app": ["ticket-booking", 640, 1280],
+  "task-poster-app": ["task-poster", 640, 1080],
 };
+
+// Card is full-bleed inside the container on mobile, half the grid above it.
+const PROJECT_IMG_SIZES =
+  "(max-width: 760px) calc(100vw - 44px), (max-width: 1184px) calc((100vw - 86px) / 2), 517px";
+
+function ProjectShot({ slug, alt }) {
+  const entry = projectImageMap[slug];
+  if (!entry) return null;
+
+  const [name, ...widths] = entry;
+  const largest = widths[widths.length - 1];
+
+  return (
+    <img
+      className="project-img"
+      src={`${BASE}assets/${name}-${largest}.webp`}
+      srcSet={widths
+        .map((w) => `${BASE}assets/${name}-${w}.webp ${w}w`)
+        .join(", ")}
+      sizes={PROJECT_IMG_SIZES}
+      width={largest}
+      height={Math.round((largest * 3) / 4)}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
 
 export default function Projects() {
   const ref = useReveal();
@@ -54,15 +85,10 @@ export default function Projects() {
 
         <div className="project-list">
           {filteredProjects.length > 0 ? (
-            filteredProjects.map((project, i) => (
+            filteredProjects.map((project) => (
               <div className="project-card reveal" key={project.title}>
                 <div className="project-img-wrap">
-                  <img
-                    className="project-img"
-                    src={projectImageMap[project.slug]}
-                    alt={project.title}
-                    loading="lazy"
-                  />
+                  <ProjectShot slug={project.slug} alt={project.title} />
                 </div>
                 <span className="project-type">{project.type}</span>
                 <div className="project-top">

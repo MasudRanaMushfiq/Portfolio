@@ -7,12 +7,7 @@
       name="description"
       content="TryLense — An online eyewear shop with Meta Pixel, anti-fraud controls, and virtual try-on."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
     <title>TryLense — Masud Rana Mushfiq</title>
     <style>
       * {
@@ -271,7 +266,16 @@
         </div>
 
         <div class="project-img-wrap">
-          <img src="../assets/TryLense.png" alt="TryLense" />
+          <img
+            src="../assets/trylense-1184.webp"
+            srcset="../assets/trylense-640.webp 640w, ../assets/trylense-1184.webp 1184w"
+            sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1120px) calc(100vw - 64px), 1056px"
+            width="1184"
+            height="888"
+            alt="TryLense"
+            decoding="async"
+            fetchpriority="high"
+          />
           <div class="project-links">
             <a
               href="https://trylense.com/"

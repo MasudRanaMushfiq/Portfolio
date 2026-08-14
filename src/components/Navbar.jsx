@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { profile } from "../data";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 const links = [
   { href: "#top", id: "top", label: "Home" },
@@ -11,24 +12,19 @@ const links = [
   { href: "#contact", id: "contact", label: "Contact" },
 ];
 
+const linkIds = links.map((l) => l.id);
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("top");
+  const active = useActiveSection(linkIds);
 
   useEffect(() => {
-    const sections = links
-      .map((l) => document.getElementById(l.id))
-      .filter(Boolean);
-
+    // Only reads scrollY (no layout-forcing property) and writes state on the
+    // transition, so this no longer re-renders the nav on every scroll tick.
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      const pos = window.scrollY + window.innerHeight * 0.35;
-      let current = "top";
-      for (const sec of sections) {
-        if (sec.offsetTop <= pos) current = sec.id;
-      }
-      setActive(current);
+      const next = window.scrollY > 24;
+      setScrolled((prev) => (prev === next ? prev : next));
     };
 
     onScroll();
