@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rajshahi University Student Management System (RUSMS) — a production student information system and central student-data service for Rajshahi University."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>
+      Rajshahi University Student Management System — Masud Rana Mushfiq
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #f2f5f8;
+        color: #0c1824;
+        font-family:
+          "Manrope",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      header {
+        padding: 36px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 14.5px;
+        color: #fff;
+        text-decoration: none;
+        background: #0e6ba8;
+        padding: 12px 26px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(14, 107, 168, 0.25);
+        transition:
+          transform 0.25s,
+          background 0.25s,
+          box-shadow 0.25s;
+      }
+      .back-link:hover {
+        background: #0a5183;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(14, 107, 168, 0.35);
+      }
+      .project-page {
+        padding: 20px 0 80px;
+      }
+      .project-hero {
+        margin-bottom: 48px;
+      }
+      .project-type {
+        display: inline-block;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0e6ba8;
+        background: #ddebf5;
+        padding: 4px 14px;
+        border-radius: 6px;
+        margin-bottom: 14px;
+      }
+      .project-hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(34px, 5vw, 52px);
+        font-weight: 640;
+        letter-spacing: -0.015em;
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .project-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .project-meta span {
+        display: inline-block;
+        color: #0e6ba8;
+        background: #ddebf5;
+        padding: 4px 14px;
+        border-radius: 6px;
+      }
+      .project-meta .sep {
+        display: none;
+      }
+      .project-img-wrap {
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #e9eef3;
+        border: 1px solid #d5dfe8;
+        margin-bottom: 40px;
+        aspect-ratio: 4 / 3;
+      }
+      .project-img-wrap img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .project-img-wrap .project-links {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        margin-top: 0;
+      }
+      .section-title {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(20px, 2.8vw, 26px);
+        font-weight: 620;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        color: #0e6ba8;
+      }
+      .desc-text {
+        color: #334556;
+        font-size: 16.5px;
+        line-height: 1.75;
+        margin-bottom: 40px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #d5dfe8;
+        border-radius: 16px;
+        padding: 28px;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(12, 24, 36, 0.08);
+      }
+      .card h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 18px;
+        font-weight: 620;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .card h3 .icon {
+        font-size: 22px;
+      }
+      .card p,
+      .card li {
+        color: #334556;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .card ul {
+        list-style: none;
+        padding: 0;
+      }
+      .card ul li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+      .card ul li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #0e6ba8;
+        font-weight: 700;
+      }
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 26px;
+        border-radius: 999px;
+        font-size: 14.5px;
+        font-weight: 700;
+        text-decoration: none;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          background 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        background: #fff;
+        color: #334556;
+        border: 1.5px solid #d5dfe8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .btn-ghost:hover {
+        border-color: #0c1824;
+        color: #0c1824;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+      .btn-primary {
+        background: #fff;
+        color: #0e6ba8;
+        border: 1.5px solid #0e6ba8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .btn-primary:hover {
+        background: #0e6ba8;
+        color: #fff;
+        border-color: #0e6ba8;
+        box-shadow: 0 6px 18px rgba(14, 107, 168, 0.25);
+      }
+      footer {
+        padding: 30px 0;
+        text-align: center;
+        color: #5e7182;
+        font-size: 13px;
+        border-top: 1px solid #d5dfe8;
+      }
+      footer a {
+        color: #0e6ba8;
+        text-decoration: none;
+      }
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="../" class="back-link">&larr; Back to Portfolio</a>
+      </header>
+      <main class="project-page">
+        <div class="project-hero">
+          <span class="project-type">Web Application</span>
+          <h1>Rajshahi University Student Management System</h1>
+          <div class="project-meta">
+            <span>2026</span><span class="sep"></span><span>Backend</span>
+            <span class="sep"></span><span>Laravel · PHP · MySQL · REST API</span>
+          </div>
+        </div>
+
+        <div class="project-img-wrap">
+          <img
+            src="../assets/RUSMS.png"
+            alt="Rajshahi University Student Management System"
+          />
+          <div class="project-links">
+            <a
+              href="https://github.com/MasudRanaMushfiq/Rajshahi-University-Student-Management-System"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-ghost"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <p class="desc-text">
+          A production student information system and central student-data
+          service for Rajshahi University. One authoritative student record is
+          served two ways: a server-rendered web application with
+          organization-scoped panels for university officers, and a versioned
+          REST API that gives other campus systems only the fields their token
+          entitles them to. Live across the Academic Section, dean offices,
+          departments, and residential halls.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 2L2 18h16L10 2z" />
+                <path d="M10 8v4" />
+                <path d="M10 14.5V15" />
+              </svg>
+              Problem
+            </h3>
+            <p>
+              Student data lived in separate spreadsheets across the Academic
+              Section, dean offices, departments, and halls. Copies went stale
+              between data dumps, a correction made in one office never reached
+              the others, access to the database was all-or-nothing when it
+              needed to be scoped, and nothing recorded who changed what.
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10 2a5 5 0 0 0-3 9c0 2 1 3 1 4h4c0-1 1-2 1-4a5 5 0 0 0-3-9z"
+                />
+                <path d="M8 15h4" />
+              </svg>
+              Solution
+            </h3>
+            <p>
+              A Laravel monolith holding one authoritative student record, with
+              access scoped by organizational unit and by field at the query
+              level. A correction made by an Academic Section officer is
+              immediately visible to every downstream system, because those
+              systems read the record over an API instead of keeping their own
+              copy of it.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 40px">
+          <h3>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5L10 2z"
+              />
+            </svg>
+            Key Features
+          </h3>
+          <ul>
+            <li>
+              Fast student lookup by identifier, with sectioned record views —
+              basic, personal, contact, identity, academic
+            </li>
+            <li>
+              Record editing with cross-entity integrity validation and
+              admission lifecycle handling (cancellation, reinstatement)
+            </li>
+            <li>
+              Five scoped panels — Super Admin, Academic, Dean, Department, and
+              Hall — each constrained to its own unit
+            </li>
+            <li>
+              Official PDFs — admission forms, registration cards, migration
+              certificates — with correct Bengali typesetting, embedded
+              photographs, barcodes, and QR codes
+            </li>
+            <li>
+              Column-picker spreadsheet exports with permission-gated contact
+              fields
+            </li>
+            <li>
+              Dashboards with faculty, department, program, and hall breakdowns,
+              plus hall occupancy and cohort statistics
+            </li>
+            <li>
+              Versioned integration API with capability-scoped tokens and an
+              activity log carrying actor attribution and field-level diffs
+            </li>
+            <li>
+              Legacy student module giving pre-system students bilingual name
+              fields and document access
+            </li>
+          </ul>
+        </div>
+
+        <h2 class="section-title">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M2 10l8 5 8-5" />
+            <path d="M2 14l8 5 8-5" />
+            <path d="M2 6l8 5 8-5" />
+            <path d="M10 1L2 6l8 5 8-5-8-5z" />
+          </svg>
+          Challenges &amp; Engineering Deep Dive
+        </h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="7" width="14" height="10" rx="2" />
+                <path d="M7 7V5a3 3 0 0 1 6 0v2" />
+              </svg>
+              Scoping Access by Organizational Unit and by Field
+            </h3>
+            <p>
+              A hall clerk, a department officer, a dean, and an Academic Section
+              officer all need the same student record but a different slice of
+              it. Filtering in the view layer would have been the easy path — and
+              the wrong one, since the unauthorized rows would still be loaded
+              and one missed template condition would leak them.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Permission is enforced at the
+              query level, not the display level. A hall clerk's queries are
+              constrained so other halls' students are not returned at all. A
+              single declarative configuration maps each section of the student
+              record to the capability required to read it and the rules used to
+              validate it, so adding a field means editing one map rather than
+              hunting through controllers and Blade templates. There is no
+              self-registration anywhere in the system — accounts are provisioned
+              by administrators only.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 3h9l3 3v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+                <path d="M12 3v4h4" />
+                <path d="M6 11h8" />
+                <path d="M6 14h5" />
+              </svg>
+              Official Documents with Correct Bengali Typesetting
+            </h3>
+            <p>
+              Admission forms, registration cards, and migration certificates are
+              official university documents — they have to render Bangla script
+              correctly, carry the student's photograph, and be verifiable in
+              hand. Complex-script shaping is where most PDF pipelines quietly
+              produce broken output.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Documents are rendered from the
+              live record at print time rather than stored as static files, so a
+              correction shows up on the next printed copy instead of leaving a
+              stale PDF in circulation. The generator handles complex-script
+              shaping for Bangla, embeds photographs, and stamps barcodes and QR
+              codes for verification. Registration cards ship in two layout
+              options, and migration certificates are generated for outgoing
+              students on demand.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="10" r="7" />
+                <path d="M3 10h14" />
+                <path d="M10 3a12 12 0 0 1 0 14a12 12 0 0 1 0-14z" />
+              </svg>
+              Integration API — Capabilities, Not Access
+            </h3>
+            <p>
+              Other university systems needed student data, and the obvious
+              request was always the same: a database account, or a nightly dump.
+              Both recreate the original problem — a second copy that drifts, and
+              far broader access than the consuming system actually needs.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> A versioned REST API issues
+              tokens carrying an explicit capability checklist. Responses include
+              only the sections that token is entitled to — a hall-management
+              system asking for name and hall assignment receives exactly that,
+              never identity documents or contact information. Business logic for
+              statistics, exports, updates, and documents lives in a service
+              layer beneath both the web and API surfaces, so the two never drift
+              apart, and cohort-scale operations run through validated
+              transactional endpoints.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 16V9" />
+                <path d="M8 16V5" />
+                <path d="M13 16v-8" />
+                <path d="M18 16v-4" />
+              </svg>
+              Staying Fast on Old Campus Machines
+            </h3>
+            <p>
+              Officers work on older campus hardware over a university network.
+              Student tables run to cohort scale, and full-university exports and
+              document batches are routine — enough to exhaust memory or hang a
+              page if handled naively.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> The application is server-rendered
+              by design; an SPA would have added overhead to what are
+              fundamentally form-and-table workflows. Lists return nothing until
+              a search is actually performed, queries select only the columns
+              being displayed, and dashboards aggregate inside the database
+              rather than in PHP. Spreadsheet exports and document generation
+              stream in chunks, so memory stays constant no matter how large the
+              batch.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 2l6 3v5c0 4-2.5 7-6 8-3.5-1-6-4-6-8V5l6-3z" />
+                <path d="M7.5 10l1.8 1.8L13 8" />
+              </svg>
+              Auditability and Authorization as Source Code
+            </h3>
+            <p>
+              For a record that many offices can edit, "who changed this, and
+              when?" has to have an answer. Routing-table permission lists tend
+              to answer it badly — the rule sits far from the action it protects,
+              and the two drift apart as the system grows.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Capabilities are declared
+              adjacent to the protected action rather than in a routing table, so
+              the guard is visible in the same place as the code it guards.
+              Model-level activity logging records every change with actor
+              identity, timestamp, and field-level diffs, and the same
+              attribution covers permission modifications, exports, and
+              integration calls. Integration tokens are managed through explicit
+              capability checklists rather than free-form scopes.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="10" r="7.5" />
+                <path d="M10 6.5v4" />
+                <path d="M10 13.5v.5" />
+              </svg>
+              Why There's No Public Demo
+            </h3>
+            <p>
+              The system holds protected, identifiable student records, runs
+              behind university network restrictions, requires
+              institution-provisioned accounts, and depends on internal
+              authentication services — so there is no public login to hand out.
+              The screenshot above is the officer login screen; the repository
+              README documents the architecture, access model, and integration
+              contract in full.
+            </p>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <a href="../">Back to Masud Rana Mushfiq's Portfolio</a>
+      </footer>
+    </div>
+  </body>
+</html>

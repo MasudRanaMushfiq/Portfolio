@@ -5,6 +5,7 @@ import { useReveal } from "../hooks/useReveal";
 const BASE = import.meta.env.BASE_URL;
 
 const projectImageMap = {
+  "ru-student-management-system": `${BASE}assets/RUSMS.png`,
   trylense: `${BASE}assets/TryLense.png`,
   "online-judge": `${BASE}assets/Online Judge.png`,
   "laravel-blood-donation-backend": `${BASE}assets/Blood Donation Backend.png`,

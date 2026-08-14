@@ -68,11 +68,38 @@ export const projectCategories = ["All", "Backend", "Frontend", "App"];
 
 export const projects = [
   {
+    title: "Rajshahi University Student Management System",
+    slug: "ru-student-management-system",
+    type: "Web Application",
+    description:
+      "A production student information system for Rajshahi University — one authoritative student record, organization-scoped panels for every office, official Bengali PDF documents, and a capability-scoped REST API for other campus systems.",
+    image: "RUSMS.png",
+    tags: ["Laravel", "PHP", "MySQL", "REST API"],
+    github:
+      "https://github.com/MasudRanaMushfiq/Rajshahi-University-Student-Management-System",
+    live: "#",
+    year: "2026",
+    category: "Backend",
+    problem:
+      "Student data lived in separate spreadsheets across the Academic Section, dean offices, departments, and halls. Copies went stale, a correction made in one office never reached the others, access was all-or-nothing, and nothing recorded who changed what.",
+    solution:
+      "Built a Laravel monolith that holds one authoritative student record and serves it two ways — a server-rendered web application with organization-scoped panels for university officers, and a versioned REST API that gives other campus systems only the fields their token entitles them to.",
+    features: [
+      "Fast student lookup with sectioned record views and cross-entity validation",
+      "Scoped panels for Super Admin, Academic, Dean, Department, and Hall offices",
+      "Official PDFs — admission forms, registration cards, migration certificates — with correct Bengali typesetting, barcodes, and QR codes",
+      "Column-picker spreadsheet exports with permission-gated contact fields",
+      "University-wide dashboards with faculty, department, program, and hall breakdowns",
+      "Integration API issuing capability-scoped tokens, not database access",
+      "Activity log with actor attribution and field-level diffs",
+    ],
+  },
+  {
     title: "TryLense",
     slug: "trylense",
     type: "Website",
     description:
-      "An online eyewear shop built for TryLense, with Meta Pixel setup, anti-fraud controls, and a virtual try-on flow for each product.",
+      "An online eyewear shop built for TryLense, with Meta Pixel tracking, anti-fraud order screening, and a face-tracked virtual try-on that lets shoppers preview frames before buying.",
     image: "TryLense.png",
     tags: ["React", "Vite", "Meta Pixel", "Virtual Try-On"],
     github: "#",
