@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Employee Profile Management System — a full-stack profile, payroll and directory platform serving 4,586 University of Rajshahi employees, replacing a decade-old legacy system."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>
+      Rajshahi University Employee Profile System — Masud Rana Mushfiq
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #f2f5f8;
+        color: #0c1824;
+        font-family:
+          "Manrope",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      header {
+        padding: 36px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 14.5px;
+        color: #fff;
+        text-decoration: none;
+        background: #0e6ba8;
+        padding: 12px 26px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(14, 107, 168, 0.25);
+        transition:
+          transform 0.25s,
+          background 0.25s,
+          box-shadow 0.25s;
+      }
+      .back-link:hover {
+        background: #0a5183;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(14, 107, 168, 0.35);
+      }
+      .project-page {
+        padding: 20px 0 80px;
+      }
+      .project-hero {
+        margin-bottom: 48px;
+      }
+      .project-type {
+        display: inline-block;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0e6ba8;
+        background: #ddebf5;
+        padding: 4px 14px;
+        border-radius: 6px;
+        margin-bottom: 14px;
+      }
+      .project-hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(34px, 5vw, 52px);
+        font-weight: 640;
+        letter-spacing: -0.015em;
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .project-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .project-meta span {
+        display: inline-block;
+        color: #0e6ba8;
+        background: #ddebf5;
+        padding: 4px 14px;
+        border-radius: 6px;
+      }
+      .project-meta .sep {
+        display: none;
+      }
+      .project-img-wrap {
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #e9eef3;
+        border: 1px solid #d5dfe8;
+        margin-bottom: 40px;
+        aspect-ratio: 4 / 3;
+      }
+      .project-img-wrap img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .project-img-wrap .project-links {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        margin-top: 0;
+      }
+      .section-title {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(20px, 2.8vw, 26px);
+        font-weight: 620;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        color: #0e6ba8;
+      }
+      .desc-text {
+        color: #334556;
+        font-size: 16.5px;
+        line-height: 1.75;
+        margin-bottom: 40px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #d5dfe8;
+        border-radius: 16px;
+        padding: 28px;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(12, 24, 36, 0.08);
+      }
+      .card h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 18px;
+        font-weight: 620;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .card h3 .icon {
+        font-size: 22px;
+      }
+      .card p,
+      .card li {
+        color: #334556;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .card ul {
+        list-style: none;
+        padding: 0;
+      }
+      .card ul li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+      .card ul li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #0e6ba8;
+        font-weight: 700;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 18px 24px;
+        margin-top: 4px;
+      }
+      .stat-grid div {
+        border-left: 3px solid #ddebf5;
+        padding-left: 14px;
+      }
+      .stat-grid strong {
+        display: block;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 26px;
+        font-weight: 640;
+        line-height: 1.2;
+        color: #0e6ba8;
+      }
+      .stat-grid span {
+        font-size: 13.5px;
+        color: #5e7182;
+        font-weight: 600;
+      }
+      .flow {
+        background: #f6f9fb;
+        border: 1px solid #d5dfe8;
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin-top: 14px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #334556;
+        line-height: 1.9;
+        overflow-x: auto;
+      }
+      .flow em {
+        color: #0e6ba8;
+        font-style: normal;
+        font-weight: 700;
+      }
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 26px;
+        border-radius: 999px;
+        font-size: 14.5px;
+        font-weight: 700;
+        text-decoration: none;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          background 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        background: #fff;
+        color: #334556;
+        border: 1.5px solid #d5dfe8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .btn-ghost:hover {
+        border-color: #0c1824;
+        color: #0c1824;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      }
+      .btn-primary {
+        background: #fff;
+        color: #0e6ba8;
+        border: 1.5px solid #0e6ba8;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      .btn-primary:hover {
+        background: #0e6ba8;
+        color: #fff;
+        border-color: #0e6ba8;
+        box-shadow: 0 6px 18px rgba(14, 107, 168, 0.25);
+      }
+      footer {
+        padding: 30px 0;
+        text-align: center;
+        color: #5e7182;
+        font-size: 13px;
+        border-top: 1px solid #d5dfe8;
+      }
+      footer a {
+        color: #0e6ba8;
+        text-decoration: none;
+      }
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="../" class="back-link">&larr; Back to Portfolio</a>
+      </header>
+      <main class="project-page">
+        <div class="project-hero">
+          <span class="project-type">Web Application</span>
+          <h1>Rajshahi University Employee Profile System</h1>
+          <div class="project-meta">
+            <span>2026</span><span class="sep"></span><span>Full-Stack</span>
+            <span class="sep"></span>
+            <span>Laravel · PHP · MySQL · React · TypeScript</span>
+          </div>
+        </div>
+
+        <div class="project-img-wrap">
+          <img
+            src="../assets/RU%20Employee%20Profile.jpg"
+            alt="Rajshahi University Employee Profile System"
+          />
+          <div class="project-links">
+            <a
+              href="http://profile.ru.ac.bd/public"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path
+                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                />
+                <path
+                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                />
+              </svg>
+              Live Site
+            </a>
+          </div>
+        </div>
+
+        <p class="desc-text">
+          A full-stack profile, payroll and directory platform that replaced a
+          decade-old legacy system for 4,586 University of Rajshahi employees —
+          teachers, officers and support staff. Every employee owns and
+          maintains their own professional profile, while the university's
+          administrative offices use the same data for payroll, establishment
+          records, an internal directory and a public staff directory. It ships
+          as a Laravel REST API with a Blade super-admin panel, a React +
+          TypeScript SPA for employees and administrative roles, and a
+          key-gated read-only contact API consumed by the university's mobile
+          app.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 2L2 18h16L10 2z" />
+                <path d="M10 8v4" />
+                <path d="M10 14.5V15" />
+              </svg>
+              Problem
+            </h3>
+            <p>
+              The legacy system held 4,586 employees but only 1,240 had ever
+              filled in a profile — 3,346 people, 2,461 of them actively
+              employed, were effectively invisible to it. Nobody could update
+              their own record; every correction went through an office, on
+              paper. Payroll lived in Excel, printed and distributed by hand,
+              with no per-employee payslip access and no audit trail. The data
+              itself had drifted: 279 distinct job-designation strings in the
+              database against 221 in the payroll spreadsheet, with only 134
+              matching — the same role spelled four different ways across two
+              sources of truth.
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10 2a5 5 0 0 0-3 9c0 2 1 3 1 4h4c0-1 1-2 1-4a5 5 0 0 0-3-9z"
+                />
+                <path d="M8 15h4" />
+              </svg>
+              Solution
+            </h3>
+            <p>
+              Not a rewrite of the old thing: give every employee self-service
+              ownership of their own data, give each administrative office
+              exactly the slice of authority it needs, and migrate a decade of
+              messy real data without losing or silently corrupting a single
+              person's record. A Laravel API backs five scoped administrative
+              roles and a React SPA where employees maintain their own profile,
+              export a CV and download their payslips — while the payroll
+              spreadsheet moves through an explicit, auditable state machine
+              that can never write straight to an employee record.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 40px">
+          <h3>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 16V9" />
+              <path d="M8 16V5" />
+              <path d="M13 16v-8" />
+              <path d="M18 16v-4" />
+            </svg>
+            By the Numbers
+          </h3>
+          <div class="stat-grid">
+            <div><strong>4,586</strong><span>Employees migrated</span></div>
+            <div><strong>~56,600</strong><span>Lines of PHP &amp; TS</span></div>
+            <div><strong>~120</strong><span>API endpoints</span></div>
+            <div><strong>29 · 46</strong><span>Models · migrations</span></div>
+            <div><strong>5</strong><span>Scoped admin roles</span></div>
+            <div><strong>19</strong><span>SPA feature modules</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 40px">
+          <h3>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5L10 2z"
+              />
+            </svg>
+            Key Features
+          </h3>
+          <ul>
+            <li>
+              Employee self-service profiles — academic and employment history,
+              research, publications, awards, memberships, contacts and
+              scholarly links, with drag-to-reorder section ordering
+            </li>
+            <li>
+              One-click A4 CV export in two variants — a public version and a
+              private full version carrying date of birth, addresses and
+              non-public contacts
+            </li>
+            <li>
+              Monthly payslip download, released only once the payroll batch
+              reaches published state, with every download recorded
+            </li>
+            <li>
+              TOTP two-factor authentication with QR-code enrolment for
+              employees
+            </li>
+            <li>
+              Five scoped administrative roles — Accounts, Establishment, Duty
+              admin, Public relations and Super-admin — each limited to its own
+              slice of authority
+            </li>
+            <li>
+              Full payroll pipeline: 25 earnings and 60+ deduction columns
+              imported from Excel, reviewed as a diff, approved and published as
+              separate deliberate actions
+            </li>
+            <li>
+              Salary PDFs reproducing the legacy bill layout exactly, including
+              the Bangla amount-in-words line and a per-designation-type
+              masthead
+            </li>
+            <li>
+              Public directory — offices, faculties, departments, halls and
+              institutes, with shareable individual profiles and no login
+              required
+            </li>
+            <li>
+              Key-gated read-only contact API serving the university's mobile
+              app, with keys issued, monitored and revoked from the admin panel
+            </li>
+          </ul>
+        </div>
+
+        <h2 class="section-title">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M2 10l8 5 8-5" />
+            <path d="M2 14l8 5 8-5" />
+            <path d="M2 6l8 5 8-5" />
+            <path d="M10 1L2 6l8 5 8-5-8-5z" />
+          </svg>
+          Challenges &amp; Engineering Deep Dive
+        </h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 5h14" />
+                <path d="M5 5v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V5" />
+                <path d="M8 9v5" />
+                <path d="M12 9v5" />
+              </svg>
+              A Payroll Import That Cannot Corrupt an Employee Record
+            </h3>
+            <p>
+              Applying a payroll spreadsheet straight to employee records would
+              mean one bad file overwrites 4,000 profiles. Wrapping it in a
+              transaction only narrows the window — it does not give anyone a
+              chance to look at what is about to be written.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Staging is separated from
+              application. Import runs as a chunked background job that writes
+              <em>only</em> to a staging table, never to employee records. The
+              review step then shows a diff — which profiles would change, which
+              employees are new, which rows could not be matched to a person,
+              which carry discrepancies. Unmatched rows are searched and matched
+              to an employee by a human before the batch can be published.
+              Approving applies the reviewed diff; publishing — making payslips
+              visible to employees — is a third, separate action.
+            </p>
+            <div class="flow">
+              uploaded → <em>process</em> → importing → draft →
+              <em>approve</em> → approving → draft (approved) →
+              <em>publish</em> → published
+              <br />
+              ↳ unmatched rows are matched by hand during review, and a batch
+              that still has them cannot be published
+            </div>
+            <br />
+            <p>
+              Every stage validates the batch's current state and returns a
+              specific, human-readable message for each wrong-state transition
+              rather than a generic error, so the operator always knows which
+              step they are on and what is blocking the next one.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <ellipse cx="10" cy="5" rx="7" ry="3" />
+                <path d="M3 5v10c0 1.7 3.1 3 7 3s7-1.3 7-3V5" />
+                <path d="M3 10c0 1.7 3.1 3 7 3s7-1.3 7-3" />
+              </svg>
+              The Migration Was Iterating Over the Wrong Table
+            </h3>
+            <p>
+              The first version of the migration command looped over the legacy
+              <em>profiles</em> table — the natural choice, since that is where
+              all the profile content lives. It migrated 1,240 people and looked
+              like it worked.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> The legacy <em>employees</em>
+              roster held 4,586 rows; the profiles table only held entries for
+              people who had ever bothered to fill one in. The migration was
+              silently excluding 3,346 people, 2,461 of them currently employed.
+              Inverting the driver fixed it — iterate the full employee roster
+              and left-join profile content where it happens to exist, so
+              everyone gets a record and profile content is optional enrichment
+              rather than the entry condition. The lesson generalises: when
+              migrating, ask what the <em>authoritative</em> set of entities is.
+              It is rarely the richest-looking table.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="8.5" cy="8.5" r="5.5" />
+                <path d="M12.5 12.5L17 17" />
+                <path d="M6.5 8.5h4" />
+              </svg>
+              Reconciling 366 Job Designations That Were Really ~230
+            </h3>
+            <p>
+              279 unique designation strings in the legacy database, 221 in the
+              payroll Excel, only 134 matching case-insensitively. Creating them
+              all naively would have produced a designation table full of
+              near-duplicates — <em>'MLSS ( CLEANER)'</em> beside
+              <em>'MISS (CLEANER)'</em>, <em>'SECURITY GUARD ( LD ASSISTANT
+              EQV.)'</em> beside <em>'Security Guard (Lda Eqv.)'</em>.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> A three-tier reconciliation
+              funnel — normalising punctuation and spacing caught 22, expanding
+              abbreviations (LDA → LD ASSISTANT, EQV → EQUIVALENT, SR → SENIOR)
+              caught 11, and edit distance within 25% produced 13 candidates
+              that I reviewed by hand, accepting 6 and rejecting 7. Tier three
+              is where it mattered: pure edit distance produces confident false
+              positives, because different roles share long common suffixes. UD
+              and LD are different pay grades, not a typo; deputy chief engineer
+              (electrical) and (civil) are different disciplines. Final result —
+              72 of the 232 mismatches were genuinely the same role written
+              inconsistently, and the remaining 136 are legitimately distinct
+              roles. Fuzzy matching is a candidate generator, not a decision
+              maker, and on payroll data affecting real people's grades the
+              honest answer beats a clean-looking forced merge.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2.5" y="4" width="15" height="12" rx="2" />
+                <path d="M6 8.5l2.5 2-2.5 2" />
+                <path d="M10.5 12.5h4" />
+              </svg>
+              A "Hang" That Was Actually a 1.7 MB Console Line
+            </h3>
+            <p>
+              The migration would freeze for 30+ minutes on one specific record.
+              No CPU spike, no error, no progress — every symptom of a deadlock
+              and none of the causes.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> One employee's biography, pasted
+              from Word, was 1.7 MB. The insert failed, and the database
+              exception embedded the <em>entire failed SQL statement</em> in its
+              message; the command printed that message verbatim. Symfony
+              Console is not built to render a megabyte-long single line, so the
+              process only appeared frozen while it wrapped and painted it. The
+              fix was two-part: cap every stored and printed error message
+              across all import commands to the exception class plus a couple of
+              hundred characters, then remove the underlying cause by widening
+              the biography column from TEXT (65 KB) to MEDIUMTEXT (16 MB) —
+              truncating someone's biography is visible data loss. "Hung
+              process" and "slow process" have different fixes; trace before you
+              optimise, and never print an untrusted, unbounded string to a
+              terminal.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 6h14" />
+                <path d="M3 10h9" />
+                <path d="M3 14h12" />
+                <path d="M15.5 8.5l2 2-2 2" />
+              </svg>
+              Real Data Is the Specification
+            </h3>
+            <p>
+              Six of the eleven significant problems on this project were
+              invisible until the code ran against 4,586 real rows. Schema
+              decisions made against sample data turned out to be hypotheses,
+              and each failure needed its own judgement call about whether
+              losing data was acceptable.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Publication and resource URLs
+              were widened from varchar(255) to TEXT, because real ResearchGate
+              and ScienceDirect signed URLs exceed it and a truncated URL is
+              broken rather than shortened. The short education summary was
+              truncated to 255 instead, because it is a summary field by design.
+              A degree passing year of 1889 — outside MySQL's YEAR range — was
+              validated and nulled rather than allowed to kill a 4,586-row run.
+              Legacy created/modified columns looked like Unix timestamps but
+              held values like <em>2134</em>, which would have written
+              January 1970 across the dataset; they were ignored entirely, since
+              a missing date is honest and a wrong date is a lie that survives
+              forever. The principle: truncate when the field is a summary,
+              widen when truncation destroys meaning, null when the value is
+              simply invalid — and never let one bad row kill the run.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 2l6 3v5c0 4-2.5 7-6 8-3.5-1-6-4-6-8V5l6-3z" />
+                <path d="M7.5 10l1.8 1.8L13 8" />
+              </svg>
+              Designing for the Abort, Not the Happy Path
+            </h3>
+            <p>
+              Two legacy columns carried what was nominally the same identity —
+              one a bare payroll number, the other the same number with a
+              department-code prefix bolted on. Since the office is already a
+              separate foreign key in the new schema, the prefix was both
+              redundant and ambiguous. The importer writes upserts, so a
+              collision on that key would quietly merge two human beings into
+              one row.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Standardise on the bare payroll
+              number, and write an explicitly irreversible normalisation
+              migration that <em>refuses to run</em> if any two employees would
+              collide — a human resolves those first. The same defensive stance
+              runs through the whole importer: before writing anything, it
+              audits the full legacy key set and aborts on collisions or
+              unresolvable IDs. The most valuable line in the migration is the
+              one that refuses to run; a migration that stops and tells a human
+              "these two people claim the same payroll number" is worth more
+              than one that finishes.
+            </p>
+            <br />
+            <p>
+              The same instinct decided what <em>not</em> to automate. The
+              legacy system had two roles, the new one has five scoped ones, and
+              no sound automatic mapping exists between them — a wrong guess
+              hands someone payroll access they should not have. So roles are
+              not migrated at all; they are assigned by hand. And where the new
+              schema required a government identity field the legacy system had
+              never captured, the placeholder was derived from an identifier the
+              employee already recognises rather than randomly generated, so the
+              person sees a value they know is wrong and corrects it themselves.
+              When you must invent data to satisfy a constraint, optimise the
+              placeholder for how it gets removed.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="7" width="14" height="10" rx="2" />
+                <path d="M7 7V5a3 3 0 0 1 6 0v2" />
+              </svg>
+              Two Guards, Least Privilege, and a Full Audit Trail
+            </h3>
+            <p>
+              The system holds dates of birth, national identity numbers, home
+              addresses and salary figures for 4,586 people, and five different
+              offices need to touch parts of it. Hiding navigation is not
+              access control.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Employees and administrators
+              authenticate through two separate guards — token-based and
+              session-based — so a compromised employee credential cannot reach
+              the admin surface at all. Employees get TOTP two-factor
+              authentication built on a short-lived, single-use, hashed
+              challenge held between the password and OTP steps, and enabling it
+              revokes existing sessions. Payslip access is policy-gated rather
+              than merely hidden: an employee can reach only their own
+              statement, only after the batch is published, and every download
+              is recorded. The public CV export omits date of birth, addresses
+              and any contact the employee has not marked visible, while the
+              complete version is reachable only through an authenticated
+              self-service route. Machine-to-machine access is key-gated at the
+              middleware layer with per-key last-used time and origin, and a
+              model-wide activity log records before-and-after values with
+              causer attribution that distinguishes an administrator from an
+              employee — with credentials and two-factor secrets explicitly
+              excluded from what gets logged.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 5L3 10l4 5" />
+                <path d="M13 5l4 5-4 5" />
+                <path d="M11 3.5l-2 13" />
+              </svg>
+              Architecture Enforced by Tooling, Not by Style Guide
+            </h3>
+            <p>
+              The SPA is feature-sliced across 19 modules. Layering rules that
+              live in a style guide erode quietly — four components had already
+              reached past their feature's API layer and called the HTTP client
+              directly.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> The boundaries are enforced by
+              lint. An <em>eslint-plugin-boundaries</em> configuration plus a
+              no-restricted-imports rule makes it an <em>error</em> for a page
+              or component to import the axios client directly — every network
+              call has to go through its feature's api module. The four
+              pre-existing violations are what motivated the rule. Routing is
+              split the same way: every route is its own lazy chunk importing
+              the page module directly rather than a feature barrel, because a
+              barrel import would make every page re-exported from it share one
+              chunk — an employee opening their payslip list would also download
+              the administrator review UI they cannot use. React, React-DOM and
+              React Router sit in separate vendor chunks so an application
+              deploy does not invalidate ~140 KB of vendor code for returning
+              visitors.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="10" r="7.5" />
+                <path d="M10 6.5v4" />
+                <path d="M10 13.5v.5" />
+              </svg>
+              What's Public, and What Isn't
+            </h3>
+            <p>
+              The live link above opens the public directory — offices,
+              faculties, departments, halls and institutes, with individual
+              staff profiles on shareable links and no login required. That
+              surface is deliberately public; everything behind it is not. The
+              authenticated side holds identifiable employee records — dates of
+              birth, national identity information, home addresses, photographs
+              and salary figures — reachable only through
+              institution-provisioned accounts, so there is no demo login to
+              hand out, and the screenshot above is the employee profile view
+              rendered with seeded demo data rather than a real record. What
+              can be shared instead is the reasoning: every non-obvious decision
+              above lives in an internal decision log recording its rationale,
+              its trade-off <em>and</em> its consequence, including the
+              questions deliberately left unresolved. When the system owner
+              chose to keep a handful of non-conforming legacy records exactly
+              as the old database had them, prioritising fidelity over tidiness,
+              the documented consequence — that a future import expecting the
+              normalised format will skip those rows — is now recorded as
+              expected behaviour rather than discovered in six months by someone
+              who "fixes" it and silently breaks fidelity to the source of
+              truth.
+            </p>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <a href="../">Back to Masud Rana Mushfiq's Portfolio</a>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Student Management P1 — A student management system with Laravel Breeze authentication and RBAC."
+      content="Rajshahi University Student Management System (RUSMS) — a production student information system and central student-data service for Rajshahi University."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +13,9 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>Student Management P1 — Masud Rana Mushfiq</title>
+    <title>
+      Rajshahi University Student Management System — Masud Rana Mushfiq
+    </title>
     <style>
       * {
         margin: 0;
@@ -267,26 +269,26 @@
   <body>
     <div class="container">
       <header>
-          <a href="../" class="back-link">&larr; Back to Portfolio</a>
+        <a href="../" class="back-link">&larr; Back to Portfolio</a>
       </header>
       <main class="project-page">
         <div class="project-hero">
           <span class="project-type">Web Application</span>
-          <h1>Student Management P1</h1>
+          <h1>Rajshahi University Student Management System</h1>
           <div class="project-meta">
             <span>2026</span><span class="sep"></span><span>Backend</span>
-            <span class="sep"></span><span>Laravel · PHP · Breeze · RBAC</span>
+            <span class="sep"></span><span>Laravel · PHP · MySQL · REST API</span>
           </div>
         </div>
 
         <div class="project-img-wrap">
           <img
-            src="../assets/Student%20Management%20System%20p1.webp"
-            alt="Student Management P1"
+            src="../assets/RUSMS.png"
+            alt="Rajshahi University Student Management System"
           />
           <div class="project-links">
             <a
-              href="https://github.com/MasudRanaMushfiq/Student-Management-P1"
+              href="https://github.com/MasudRanaMushfiq/Rajshahi-University-Student-Management-System"
               target="_blank"
               rel="noreferrer"
               class="btn btn-ghost"
@@ -303,34 +305,17 @@
               </svg>
               GitHub
             </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              class="btn btn-primary"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-              >
-                <path
-                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                />
-                <path
-                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                />
-              </svg>
-              Live
-            </a>
           </div>
         </div>
 
         <p class="desc-text">
-          A student management system with authentication via Laravel Breeze,
-          role-based access control, and full student CRUD with an admin
-          dashboard.
+          A production student information system and central student-data
+          service for Rajshahi University. One authoritative student record is
+          served two ways: a server-rendered web application with
+          organization-scoped panels for university officers, and a versioned
+          REST API that gives other campus systems only the fields their token
+          entitles them to. Live across the Academic Section, dean offices,
+          departments, and residential halls.
         </p>
 
         <div class="grid-2">
@@ -353,9 +338,11 @@
               Problem
             </h3>
             <p>
-              Educational institutions needed a streamlined system to manage
-              student records, user roles, and administrative tasks. Manual
-              processes were error-prone and time-consuming.
+              Student data lived in separate spreadsheets across the Academic
+              Section, dean offices, departments, and halls. Copies went stale
+              between data dumps, a correction made in one office never reached
+              the others, access to the database was all-or-nothing when it
+              needed to be scoped, and nothing recorded who changed what.
             </p>
           </div>
           <div class="card">
@@ -378,10 +365,12 @@
               Solution
             </h3>
             <p>
-              Developed a full-stack student management system with Laravel
-              Breeze authentication, role-based access control
-              (admin/teacher/student), and complete CRUD operations for student
-              records.
+              A Laravel monolith holding one authoritative student record, with
+              access scoped by organizational unit and by field at the query
+              level. A correction made by an Academic Section officer is
+              immediately visible to every downstream system, because those
+              systems read the record over an API instead of keeping their own
+              copy of it.
             </p>
           </div>
         </div>
@@ -405,11 +394,39 @@
             Key Features
           </h3>
           <ul>
-            <li>Laravel Breeze authentication scaffold</li>
-            <li>Role-based access control (Admin, Teacher, Student)</li>
-            <li>Full student CRUD with validation</li>
-            <li>Admin dashboard with statistics</li>
-            <li>Responsive Tailwind CSS interface</li>
+            <li>
+              Fast student lookup by identifier, with sectioned record views —
+              basic, personal, contact, identity, academic
+            </li>
+            <li>
+              Record editing with cross-entity integrity validation and
+              admission lifecycle handling (cancellation, reinstatement)
+            </li>
+            <li>
+              Five scoped panels — Super Admin, Academic, Dean, Department, and
+              Hall — each constrained to its own unit
+            </li>
+            <li>
+              Official PDFs — admission forms, registration cards, migration
+              certificates — with correct Bengali typesetting, embedded
+              photographs, barcodes, and QR codes
+            </li>
+            <li>
+              Column-picker spreadsheet exports with permission-gated contact
+              fields
+            </li>
+            <li>
+              Dashboards with faculty, department, program, and hall breakdowns,
+              plus hall occupancy and cohort statistics
+            </li>
+            <li>
+              Versioned integration API with capability-scoped tokens and an
+              activity log carrying actor attribution and field-level diffs
+            </li>
+            <li>
+              Legacy student module giving pre-system students bilingual name
+              fields and document access
+            </li>
           </ul>
         </div>
 
@@ -429,7 +446,7 @@
             <path d="M2 6l8 5 8-5" />
             <path d="M10 1L2 6l8 5 8-5-8-5z" />
           </svg>
-          Challenges & Engineering Deep Dive
+          Challenges &amp; Engineering Deep Dive
         </h2>
 
         <div class="grid-2">
@@ -445,30 +462,29 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <circle cx="10" cy="7" r="3" />
-                <path d="M3 17c0-4 3-7 7-7s7 3 7 7" />
+                <rect x="3" y="7" width="14" height="10" rx="2" />
+                <path d="M7 7V5a3 3 0 0 1 6 0v2" />
               </svg>
-              Role-Based Access Control with Spatie Permission
+              Scoping Access by Organizational Unit and by Field
             </h3>
             <p>
-              The system serves three distinct user roles — Admin, Department,
-              and Exam — each with different permissions. Admin can manage
-              everything; Department can manage student records and admit
-              students; Exam handles marks, results, and academic data.
-              Implementing this cleanly without hard-coding role checks
-              throughout the codebase was a design challenge.
+              A hall clerk, a department officer, a dean, and an Academic Section
+              officer all need the same student record but a different slice of
+              it. Filtering in the view layer would have been the easy path — and
+              the wrong one, since the unauthorized rows would still be loaded
+              and one missed template condition would leak them.
             </p>
             <br />
             <p>
-              <strong>How I solved it:</strong> Used Spatie Laravel Permission
-              to define roles and permissions via database seeders, then created
-              custom middleware aliases (<code>role:admin</code>,
-              <code>role:department</code>, <code>role:exam</code>) registered
-              in <code>bootstrap/app.php</code>. Each route group in
-              <code>web.php</code> applies the appropriate middleware. The
-              <code>@can</code> Blade directive conditionally renders UI
-              elements per role, while the sidebar menu adapts based on the
-              authenticated user's role using the <code>@role</code> directive.
+              <strong>How I solved it:</strong> Permission is enforced at the
+              query level, not the display level. A hall clerk's queries are
+              constrained so other halls' students are not returned at all. A
+              single declarative configuration maps each section of the student
+              record to the capability required to read it and the rules used to
+              validate it, so adding a field means editing one map rather than
+              hunting through controllers and Blade templates. There is no
+              self-registration anywhere in the system — accounts are provisioned
+              by administrators only.
             </p>
           </div>
 
@@ -484,31 +500,30 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <rect x="3" y="3" width="14" height="14" rx="2" />
-                <path d="M9 3v14" />
-                <path d="M3 9h14" />
+                <path d="M4 3h9l3 3v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+                <path d="M12 3v4h4" />
+                <path d="M6 11h8" />
+                <path d="M6 14h5" />
               </svg>
-              Modular Architecture with nwidart/laravel-modules
+              Official Documents with Correct Bengali Typesetting
             </h3>
             <p>
-              As the project grew, placing all controllers, models, and views
-              inside the default Laravel <code>app/</code> directory became
-              unmanageable. Student-specific logic was mixed with general auth
-              and dashboard code, creating coupling that made future refactoring
-              risky.
+              Admission forms, registration cards, and migration certificates are
+              official university documents — they have to render Bangla script
+              correctly, carry the student's photograph, and be verifiable in
+              hand. Complex-script shaping is where most PDF pipelines quietly
+              produce broken output.
             </p>
             <br />
             <p>
-              <strong>How I solved it:</strong> Adopted the
-              <code>nwidart/laravel-modules</code> package to organize the
-              codebase into isolated modules. The
-              <code>Modules/Student</code> directory contains its own
-              Controllers, Models, Routes, Views, and database migrations —
-              fully self-contained. Laravel auto-discovers modules via the
-              module <code>Providers</code> namespace, and the
-              <code>artisan module:make</code> command scaffolds new ones. This
-              separation means the Student module could be extracted into a
-              Composer package later with minimal effort.
+              <strong>How I solved it:</strong> Documents are rendered from the
+              live record at print time rather than stored as static files, so a
+              correction shows up on the next printed copy instead of leaving a
+              stale PDF in circulation. The generator handles complex-script
+              shaping for Bangla, embeds photographs, and stamps barcodes and QR
+              codes for verification. Registration cards ship in two layout
+              options, and migration certificates are generated for outgoing
+              students on demand.
             </p>
           </div>
 
@@ -524,108 +539,29 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M12 2c-1 3-4 4-4 8 0 2 1 3 3 3s3-2 3-4c0-4-2-7-2-7z" />
-                <path
-                  d="M8 12c-1 1-2 2-2 4 0 2 1.5 3 4 3s4-2 4-4c0-1-.5-2-1-3"
-                />
-              </svg>
-              Audit Logging for Data Integrity
-            </h3>
-            <p>
-              Educational institutions need a tamper-proof record of who changed
-              what and when. Without an audit trail, a student record could be
-              deleted or modified with no accountability — a serious issue for
-              compliance and trust.
-            </p>
-            <br />
-            <p>
-              <strong>How I solved it:</strong> Created an
-              <code>AuditLog</code> model that captures the authenticated user
-              ID, the affected model type and ID, the action performed
-              (created/updated/deleted), and a JSON diff of old vs. new values.
-              A custom <code>Auditable</code> trait on the
-              <code>Student</code> model hooks into Eloquent events via
-              <code>booted()</code> — automatically logging every create,
-              update, and delete. The Admin dashboard displays these logs in a
-              searchable, paginated table with color-coded action badges.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M17 1l-6 6" />
-                <path d="M11 3l5 5" />
-                <path d="M16 2l-2 2" />
-                <path d="M4 11l4 4" />
-                <path d="M1 14l4 4" />
-                <path d="M14 4l2 2" />
-              </svg>
-              PDF Export of Student Records
-            </h3>
-            <p>
-              Administrators needed to generate downloadable PDFs of student
-              records for offline filing, printing, and official documentation.
-              Generating these from Blade templates with proper formatting,
-              margins, and pagination required a specialized tool.
-            </p>
-            <br />
-            <p>
-              <strong>How I solved it:</strong> Integrated
-              <code>barryvdh/laravel-dompdf</code> — a DOMPDF wrapper — to
-              render Blade templates into PDFs. Created a dedicated
-              <code>student.pdf.blade.php</code> view with print-friendly
-              styling, and a <code>downloadPdf()</code> controller method that
-              returns <code>PDF::loadView(...)->download()</code>. The Export
-              button in the student list is role-gated so only Admin and
-              Department users see it.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="3" y="3" width="14" height="14" rx="2" />
+                <circle cx="10" cy="10" r="7" />
                 <path d="M3 10h14" />
-                <path d="M10 3v14" />
+                <path d="M10 3a12 12 0 0 1 0 14a12 12 0 0 1 0-14z" />
               </svg>
-              Multi-Portal Dashboard Architecture
+              Integration API — Capabilities, Not Access
             </h3>
             <p>
-              Each role (Admin, Department, Exam) sees a different dashboard
-              with different metrics, navigation, and actions. Cramming all
-              three into a single dashboard view would create messy conditional
-              logic and hurt maintainability.
+              Other university systems needed student data, and the obvious
+              request was always the same: a database account, or a nightly dump.
+              Both recreate the original problem — a second copy that drifts, and
+              far broader access than the consuming system actually needs.
             </p>
             <br />
             <p>
-              <strong>How I solved it:</strong> Created three separate dashboard
-              controllers — <code>AdminController</code>,
-              <code>DepartmentController</code>, and
-              <code>ExamController</code> — each within the appropriate module.
-              Each controller queries only the data relevant to its role. The
-              layout file uses Bootstrap's sidebar navigation that conditionally
-              highlights menu items based on the user's role. Route groups are
-              prefixed and middleware-gated so users can only access their own
-              portal.
+              <strong>How I solved it:</strong> A versioned REST API issues
+              tokens carrying an explicit capability checklist. Responses include
+              only the sections that token is entitled to — a hall-management
+              system asking for name and hall assignment receives exactly that,
+              never identity documents or contact information. Business logic for
+              statistics, exports, updates, and documents lives in a service
+              layer beneath both the web and API surfaces, so the two never drift
+              apart, and cohort-scale operations run through validated
+              transactional endpoints.
             </p>
           </div>
 
@@ -641,38 +577,100 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <path d="M4 5h12" />
-                <path d="M10 5v11" />
-                <path d="M3 16h14" />
-                <path d="M6 5l4 5 4-5" />
+                <path d="M3 16V9" />
+                <path d="M8 16V5" />
+                <path d="M13 16v-8" />
+                <path d="M18 16v-4" />
               </svg>
-              REST API Versioning with Sanctum Auth
+              Staying Fast on Old Campus Machines
             </h3>
             <p>
-              The system exposes a <code>/api/v1/students</code> endpoint for
-              mobile or third-party integration. Designing the API with proper
-              versioning, authentication, error responses, and rate limiting
-              required careful planning to avoid breaking changes later.
+              Officers work on older campus hardware over a university network.
+              Student tables run to cohort scale, and full-university exports and
+              document batches are routine — enough to exhaust memory or hang a
+              page if handled naively.
             </p>
             <br />
             <p>
-              <strong>How I solved it:</strong> Placed all API routes under
-              <code>routes/api.php</code> with the
-              <code>/api/v1/students</code> prefix. Used Laravel Sanctum for
-              token-based authentication — users generate tokens via the
-              dashboard and pass them as Bearer tokens. Responses use Laravel's
-              <code>Resource</code> classes for consistent JSON structures, and
-              validation errors return a standardized <code>422</code> with
-              field-level messages. The
-              <code>ensureFrontendRequestsAreStateful</code>
-              middleware allows SPA authentication to co-exist with API token
-              auth.
+              <strong>How I solved it:</strong> The application is server-rendered
+              by design; an SPA would have added overhead to what are
+              fundamentally form-and-table workflows. Lists return nothing until
+              a search is actually performed, queries select only the columns
+              being displayed, and dashboards aggregate inside the database
+              rather than in PHP. Spreadsheet exports and document generation
+              stream in chunks, so memory stays constant no matter how large the
+              batch.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10 2l6 3v5c0 4-2.5 7-6 8-3.5-1-6-4-6-8V5l6-3z" />
+                <path d="M7.5 10l1.8 1.8L13 8" />
+              </svg>
+              Auditability and Authorization as Source Code
+            </h3>
+            <p>
+              For a record that many offices can edit, "who changed this, and
+              when?" has to have an answer. Routing-table permission lists tend
+              to answer it badly — the rule sits far from the action it protects,
+              and the two drift apart as the system grows.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Capabilities are declared
+              adjacent to the protected action rather than in a routing table, so
+              the guard is visible in the same place as the code it guards.
+              Model-level activity logging records every change with actor
+              identity, timestamp, and field-level diffs, and the same
+              attribution covers permission modifications, exports, and
+              integration calls. Integration tokens are managed through explicit
+              capability checklists rather than free-form scopes.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="10" cy="10" r="7.5" />
+                <path d="M10 6.5v4" />
+                <path d="M10 13.5v.5" />
+              </svg>
+              Why There's No Public Demo
+            </h3>
+            <p>
+              The system holds protected, identifiable student records, runs
+              behind university network restrictions, requires
+              institution-provisioned accounts, and depends on internal
+              authentication services — so there is no public login to hand out.
+              The screenshot above is the officer login screen; the repository
+              README documents the architecture, access model, and integration
+              contract in full.
             </p>
           </div>
         </div>
       </main>
       <footer>
-          <a href="../">Back to Masud Rana Mushfiq's Portfolio</a>
+        <a href="../">Back to Masud Rana Mushfiq's Portfolio</a>
       </footer>
     </div>
   </body>
