@@ -7,12 +7,7 @@
       name="description"
       content="Employee Profile Management System — a full-stack profile, payroll and directory platform serving 4,586 University of Rajshahi employees, replacing a decade-old legacy system."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
     <title>
       Rajshahi University Employee Profile System — Masud Rana Mushfiq
     </title>
@@ -324,8 +319,14 @@
 
         <div class="project-img-wrap">
           <img
-            src="../assets/RU%20Employee%20Profile.jpg"
+            src="../assets/ru-employee-profile-1225.webp"
+            srcset="../assets/ru-employee-profile-640.webp 640w, ../assets/ru-employee-profile-1225.webp 1225w"
+            sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1120px) calc(100vw - 64px), 1056px"
+            width="1225"
+            height="919"
             alt="Rajshahi University Employee Profile System"
+            decoding="async"
+            fetchpriority="high"
           />
           <div class="project-links">
             <a

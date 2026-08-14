@@ -7,12 +7,7 @@
       name="description"
       content="Rajshahi University Student Management System (RUSMS) — a production student information system and central student-data service for Rajshahi University."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
     <title>
       Rajshahi University Student Management System — Masud Rana Mushfiq
     </title>
@@ -283,8 +278,14 @@
 
         <div class="project-img-wrap">
           <img
-            src="../assets/RUSMS.png"
+            src="../assets/rusms-1280.webp"
+            srcset="../assets/rusms-640.webp 640w, ../assets/rusms-1280.webp 1280w"
+            sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1120px) calc(100vw - 64px), 1056px"
+            width="1280"
+            height="960"
             alt="Rajshahi University Student Management System"
+            decoding="async"
+            fetchpriority="high"
           />
           <div class="project-links">
             <a

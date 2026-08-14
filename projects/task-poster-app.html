@@ -7,12 +7,7 @@
       name="description"
       content="Task Poster App — A React Native app for posting and managing tasks."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../fonts/fonts.css" />
     <title>Task Poster App — Masud Rana Mushfiq</title>
     <style>
       * {
@@ -281,7 +276,16 @@
         </div>
 
         <div class="project-img-wrap">
-          <img src="../assets/Task%20Poster.jpg" alt="Task Poster App" />
+          <img
+            src="../assets/task-poster-1080.webp"
+            srcset="../assets/task-poster-640.webp 640w, ../assets/task-poster-1080.webp 1080w"
+            sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1120px) calc(100vw - 64px), 1056px"
+            width="1080"
+            height="810"
+            alt="Task Poster App"
+            decoding="async"
+            fetchpriority="high"
+          />
           <div class="project-links">
             <a
               href="https://github.com/MasudRanaMushfiq/Task_Poster_App"
