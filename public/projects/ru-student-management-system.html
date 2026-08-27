@@ -197,6 +197,29 @@
         color: #0e6ba8;
         font-weight: 700;
       }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 18px 24px;
+        margin-top: 4px;
+      }
+      .stat-grid div {
+        border-left: 3px solid #ddebf5;
+        padding-left: 14px;
+      }
+      .stat-grid strong {
+        display: block;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 26px;
+        font-weight: 640;
+        line-height: 1.2;
+        color: #0e6ba8;
+      }
+      .stat-grid span {
+        font-size: 13.5px;
+        color: #5e7182;
+        font-weight: 600;
+      }
       .project-links {
         display: flex;
         flex-wrap: wrap;
@@ -289,6 +312,27 @@
           />
           <div class="project-links">
             <a
+              href="https://studentdb.ru.ac.bd"
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-primary"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path
+                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                />
+                <path
+                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                />
+              </svg>
+              Live
+            </a>
+            <a
               href="https://github.com/MasudRanaMushfiq/Rajshahi-University-Student-Management-System"
               target="_blank"
               rel="noreferrer"
@@ -369,11 +413,67 @@
               A Laravel monolith holding one authoritative student record, with
               access scoped by organizational unit and by field at the query
               level. A correction made by an Academic Section officer is
-              immediately visible to every downstream system, because those
-              systems read the record over an API instead of keeping their own
-              copy of it.
+              immediately visible to every downstream system — results, exam form
+              fill-up, medical, hall automation — because those systems read the
+              record over a permissioned API instead of keeping their own copy of
+              it.
             </p>
           </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 40px">
+          <h3>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 16V9" />
+              <path d="M8 16V5" />
+              <path d="M13 16v-8" />
+              <path d="M18 16v-4" />
+            </svg>
+            What the System Serves
+          </h3>
+          <p style="margin-bottom: 20px">
+            These are live production figures, not a pilot. The system is the
+            single authoritative record for every student the university has
+            admitted, and the offices and campus systems below depend on it as
+            part of their daily work rather than occasionally.
+          </p>
+          <div class="stat-grid">
+            <div>
+              <strong>53,000+</strong><span>Student records served</span>
+            </div>
+            <div>
+              <strong>24,000+</strong><span>Enrolled students supported</span>
+            </div>
+            <div>
+              <strong>20+</strong><span>University offices served</span>
+            </div>
+            <div>
+              <strong>4</strong><span>Campus systems fed by the API</span>
+            </div>
+            <div><strong>14</strong><span>Faculties covered</span></div>
+            <div><strong>72</strong><span>Departments covered</span></div>
+            <div><strong>69</strong><span>Academic programs modelled</span></div>
+            <div><strong>22</strong><span>Residential halls served</span></div>
+            <div>
+              <strong>12</strong><span>Admission sessions on record</span>
+            </div>
+            <div><strong>3</strong><span>Admission units handled</span></div>
+          </div>
+          <p style="margin-top: 20px">
+            Every faculty, department, program, and hall at Rajshahi University
+            is represented — the system covers the whole institution, and the
+            examination result system, exam form fill-up, the medical system, and
+            hall automation all draw their student data from it.
+          </p>
         </div>
 
         <div class="card" style="margin-bottom: 40px">
@@ -404,8 +504,14 @@
               admission lifecycle handling (cancellation, reinstatement)
             </li>
             <li>
+              50+ individual permissions, granted through a role or attached
+              directly to a single user, gating view, edit, and export
+              separately — down to individual sections of a student record
+            </li>
+            <li>
               Five scoped panels — Super Admin, Academic, Dean, Department, and
-              Hall — each constrained to its own unit
+              Hall — each confined to one faculty, department, or hall, with no
+              visibility outside that scope
             </li>
             <li>
               Official PDFs — admission forms, registration cards, migration
@@ -413,16 +519,31 @@
               photographs, barcodes, and QR codes
             </li>
             <li>
-              Column-picker spreadsheet exports with permission-gated contact
-              fields
+              Excel exports composed by the officer — chosen columns emitted in
+              the order they were picked, with filters on department, hall,
+              session, and home district, and permission-gated fields excluded
             </li>
             <li>
-              Dashboards with faculty, department, program, and hall breakdowns,
-              plus hall occupancy and cohort statistics
+              Admin dashboard with live counts by faculty, department, hall, and
+              session, split by gender and totalled, plus hall occupancy and
+              cohort statistics
             </li>
             <li>
-              Versioned integration API with capability-scoped tokens and an
-              activity log carrying actor attribution and field-level diffs
+              Admission statistics summarising merit versus quota intake, broken
+              down by individual quota type and filterable by faculty,
+              department, hall, or session
+            </li>
+            <li>
+              Versioned integration API where each token carries its own
+              permission set — the hall automation system's token reads basic
+              student data and can write only resident status
+            </li>
+            <li>
+              Full database backup facility producing complete snapshots of the
+              authoritative record on a regular schedule
+            </li>
+            <li>
+              Activity log carrying actor attribution and field-level diffs
             </li>
             <li>
               Legacy student module giving pre-system students bilingual name
@@ -471,16 +592,29 @@
             <p>
               A hall clerk, a department officer, a dean, and an Academic Section
               officer all need the same student record but a different slice of
-              it. Filtering in the view layer would have been the easy path — and
-              the wrong one, since the unauthorized rows would still be loaded
-              and one missed template condition would leak them.
+              it — and "different slice" varies per person, not just per job
+              title. Filtering in the view layer would have been the easy path —
+              and the wrong one, since the unauthorized rows would still be
+              loaded and one missed template condition would leak them.
             </p>
             <br />
             <p>
-              <strong>How I solved it:</strong> Permission is enforced at the
-              query level, not the display level. A hall clerk's queries are
-              constrained so other halls' students are not returned at all. A
-              single declarative configuration maps each section of the student
+              <strong>How I solved it:</strong> The system defines 50+ individual
+              permissions, and access is enforced at the query level rather than
+              the display level. Permissions can be granted through a role or
+              attached directly to one user, so an officer's access is composed
+              rather than picked from a fixed list of job titles. View, edit, and
+              export are separate permissions, and the unit they apply to is a
+              single section of the student record — an office can be allowed to
+              read contact details without editing them, or to edit academic
+              fields while never seeing identity ones.
+            </p>
+            <br />
+            <p>
+              Organizational scope is a second, independent axis: a user can be
+              bound to one faculty, department, or hall, and their queries are
+              constrained so students outside that scope are never returned at
+              all. A single declarative configuration maps each section of the
               record to the capability required to read it and the rules used to
               validate it, so adding a field means editing one map rather than
               hunting through controllers and Blade templates. There is no
@@ -540,6 +674,93 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
+                <rect x="3" y="3" width="14" height="14" rx="2" />
+                <path d="M3 8h14" />
+                <path d="M8 8v9" />
+              </svg>
+              Spreadsheet Exports Officers Build Themselves
+            </h3>
+            <p>
+              Every office wanted a list, and no two wanted the same one — the
+              Academic Section needed one set of columns in one order, a dean's
+              office another, a hall provost another again. Shipping a fixed
+              report per request would have meant a developer in the loop for
+              every new question anyone thought to ask.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> The export is composed by the
+              officer, not hard-coded. They pick which columns to include, and
+              the order they pick them in becomes the column order in the file,
+              so a spreadsheet can be shaped to match whatever form or report it
+              is feeding. Rows are narrowed with filters on department, hall,
+              session, and home district, in any combination. The same permission
+              rules that govern the screen govern the file — a column the officer
+              cannot view is not offered in the picker and cannot appear in the
+              output, so the export can never become a way around the access
+              model.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 17h14" />
+                <path d="M6 17V9" />
+                <path d="M10 17V4" />
+                <path d="M14 17v-5" />
+              </svg>
+              Statistics the Administration Can Answer With
+            </h3>
+            <p>
+              Administrative questions arrive with a deadline attached — how many
+              students in this faculty, how many women in that hall, how much of
+              this session's intake came through merit rather than quota, and
+              which quota. Under the old arrangement each answer meant collecting
+              spreadsheets from several offices and hoping none of them was
+              stale.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> Counts are a first-class feature
+              rather than a report someone runs. The dashboard breaks the student
+              body down by faculty, department, hall, and session, split by
+              gender and totalled, and a statistics view narrows the same figures
+              by any of those dimensions. Admission intake is summarised as merit
+              against quota, with each quota category counted separately, so a
+              question about intake composition is answered on screen instead of
+              by hand.
+            </p>
+            <br />
+            <p>
+              The figures are computed live from the authoritative record, not
+              from a nightly rollup, so they cannot be out of date — and because
+              aggregation runs inside the database rather than in PHP, cohort
+              scale does not slow the page down.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <circle cx="10" cy="10" r="7" />
                 <path d="M3 10h14" />
                 <path d="M10 3a12 12 0 0 1 0 14a12 12 0 0 1 0-14z" />
@@ -547,22 +768,33 @@
               Integration API — Capabilities, Not Access
             </h3>
             <p>
-              Other university systems needed student data, and the obvious
-              request was always the same: a database account, or a nightly dump.
-              Both recreate the original problem — a second copy that drifts, and
-              far broader access than the consuming system actually needs.
+              The system is not a destination application — it is the student-data
+              service the rest of the campus runs on. The examination result
+              system, exam form fill-up, the university medical system, and hall
+              automation all read their student data from it, so it sits on the
+              critical path of processes with hard deadlines: if it is slow
+              during form fill-up week, four systems are slow. The obvious
+              request from each of them was always the same, though — a database
+              account, or a nightly dump. Both recreate the original problem: a
+              second copy that drifts, and far broader access than the consuming
+              system actually needs.
             </p>
             <br />
             <p>
               <strong>How I solved it:</strong> A versioned REST API issues
-              tokens carrying an explicit capability checklist. Responses include
-              only the sections that token is entitled to — a hall-management
-              system asking for name and hall assignment receives exactly that,
-              never identity documents or contact information. Business logic for
-              statistics, exports, updates, and documents lives in a service
-              layer beneath both the web and API surfaces, so the two never drift
-              apart, and cohort-scale operations run through validated
-              transactional endpoints.
+              tokens carrying an explicit capability checklist — the same
+              permission vocabulary the web panels use, applied per token rather
+              than per user. Responses include only the sections that token is
+              entitled to, and writes are scoped just as tightly: the hall
+              automation system's token reads a student's basic data and can
+              write exactly one field, resident status, with identity documents
+              and contact information never reaching it in either direction.
+              Business logic for statistics, exports, updates, and documents
+              lives in a service layer beneath both the web and API surfaces, so
+              the two never drift apart, and cohort-scale operations run through
+              validated transactional endpoints. Because several systems depend
+              on this one, performance and scalability were design constraints
+              from the start rather than later optimisations.
             </p>
           </div>
 
@@ -583,13 +815,14 @@
                 <path d="M13 16v-8" />
                 <path d="M18 16v-4" />
               </svg>
-              Staying Fast on Old Campus Machines
+              Performance and Scalability as a Shared Dependency
             </h3>
             <p>
-              Officers work on older campus hardware over a university network.
-              Student tables run to cohort scale, and full-university exports and
-              document batches are routine — enough to exhaust memory or hang a
-              page if handled naively.
+              Officers work on older campus hardware over a university network,
+              and four other campus systems query this one for their student
+              data. With 53,000+ records behind it, full-university exports and
+              document batches routine, and other services waiting on its
+              responses, slow work here does not stay here — it propagates.
             </p>
             <br />
             <p>
@@ -600,7 +833,8 @@
               being displayed, and dashboards aggregate inside the database
               rather than in PHP. Spreadsheet exports and document generation
               stream in chunks, so memory stays constant no matter how large the
-              batch.
+              batch, and API responses are built from the same service layer so a
+              consuming system never pays for work it did not ask for.
             </p>
           </div>
 
@@ -636,7 +870,12 @@
               identity, timestamp, and field-level diffs, and the same
               attribution covers permission modifications, exports, and
               integration calls. Integration tokens are managed through explicit
-              capability checklists rather than free-form scopes.
+              capability checklists rather than free-form scopes. Because the
+              system is deliberately the only authoritative copy of the data, a
+              full database backup facility takes complete scheduled snapshots —
+              centralization removes the accidental redundancy of scattered
+              spreadsheets, so the recovery path has to be explicit rather than
+              assumed.
             </p>
           </div>
 
@@ -656,16 +895,19 @@
                 <path d="M10 6.5v4" />
                 <path d="M10 13.5v.5" />
               </svg>
-              Why There's No Public Demo
+              Why There's No Public Login
             </h3>
             <p>
-              The system holds protected, identifiable student records, runs
-              behind university network restrictions, requires
-              institution-provisioned accounts, and depends on internal
-              authentication services — so there is no public login to hand out.
-              The screenshot above is the officer login screen; the repository
-              README documents the architecture, access model, and integration
-              contract in full.
+              The system is not restricted to the campus network —
+              studentdb.ru.ac.bd is live and reachable from anywhere. What is
+              restricted is who can sign in. It holds protected, identifiable
+              student records, so accounts are institution-provisioned: only
+              authorised university offices, the maintenance team, and
+              university employees hold credentials. Everything past the login
+              screen is live student data, so there is no public login to hand
+              out and nothing beyond that screen to show. The screenshot above
+              is the officer login screen; the repository README documents the
+              architecture, access model, and integration contract in full.
             </p>
           </div>
         </div>

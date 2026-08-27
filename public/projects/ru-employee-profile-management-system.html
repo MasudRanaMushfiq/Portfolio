@@ -361,9 +361,10 @@
           administrative offices use the same data for payroll, establishment
           records, an internal directory and a public staff directory. It ships
           as a Laravel REST API with a Blade super-admin panel, a React +
-          TypeScript SPA for employees and administrative roles, and a
-          key-gated read-only contact API consumed by the university's mobile
-          app.
+          TypeScript SPA for employees and administrative roles, and a key-gated
+          read-only API consumed by the university's mobile app and by
+          ru.ac.bd itself, which draws its office head, chairman and director
+          listings from this system rather than maintaining its own.
         </p>
 
         <div class="grid-2">
@@ -503,6 +504,16 @@
               slice of authority
             </li>
             <li>
+              Delegated office administration — an office admin maintains their
+              own office, reordering its seniority index and changing employee
+              status, without reaching any other office
+            </li>
+            <li>
+              Super office admin authority to reorder the seniority index of any
+              office and to grant office-admin rights to any user, so
+              delegation is itself an administered action
+            </li>
+            <li>
               Full payroll pipeline: 25 earnings and 60+ deduction columns
               imported from Excel, reviewed as a diff, approved and published as
               separate deliberate actions
@@ -518,8 +529,15 @@
               required
             </li>
             <li>
-              Key-gated read-only contact API serving the university's mobile
-              app, with keys issued, monitored and revoked from the admin panel
+              Key-gated read-only API serving the university's mobile app and
+              the main ru.ac.bd website, which pulls its office head, chairman
+              and director listings from here, with keys issued, monitored and
+              revoked from the admin panel
+            </li>
+            <li>
+              Extra duty module with bulk Excel upload — an administrator
+              uploads the spreadsheet the office already keeps and the
+              assignments are imported straight into the database
             </li>
           </ul>
         </div>
@@ -595,6 +613,47 @@
               specific, human-readable message for each wrong-state transition
               rather than a generic error, so the operator always knows which
               step they are on and what is blocking the next one.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="14" height="13" rx="2" />
+                <path d="M3 8h14" />
+                <path d="M7 2v4" />
+                <path d="M13 2v4" />
+                <path d="M8 12l1.5 1.5L13 10.5" />
+              </svg>
+              Extra Duty, Entered Once Instead of Typed Twice
+            </h3>
+            <p>
+              Extra duty assignments arrive in bulk and they arrive as
+              spreadsheets — that is simply how the offices that allocate them
+              work. Asking an administrator to retype a list of assignments into
+              a form, one employee at a time, would have guaranteed the module
+              went unused and the spreadsheet stayed the real record.
+            </p>
+            <br />
+            <p>
+              <strong>How I solved it:</strong> The extra duty module takes the
+              spreadsheet the office already has. An administrator uploads the
+              Excel file and the assignments are imported into the database
+              directly, so bulk entry is one upload rather than an afternoon of
+              typing. The module was rebuilt to be flexible about how duties are
+              defined and assigned, with the operations an office actually
+              performs available as ready-made features rather than assembled
+              from generic admin screens — the intent being that someone who
+              administers an office can use it without being trained on it.
             </p>
           </div>
 
@@ -867,6 +926,19 @@
               causer attribution that distinguishes an administrator from an
               employee — with credentials and two-factor secrets explicitly
               excluded from what gets logged.
+            </p>
+            <br />
+            <p>
+              Authority is also delegated downward rather than centralised. Each
+              office has an office admin who maintains that office and nothing
+              beyond it — reordering its seniority index, which governs how
+              employees are ranked and listed, and changing employee status as
+              people join, move or leave. Above them, a super office admin can
+              reorder the seniority index of any office and grant office-admin
+              rights to any user, so the right to administer an office is itself
+              a permission that is granted, recorded and revocable rather than a
+              standing arrangement. Every one of these changes lands in the same
+              activity log, with the administrator who made it named.
             </p>
           </div>
 
