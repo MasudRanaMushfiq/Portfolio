@@ -74,6 +74,41 @@ export const projectCategories = [
 
 export const projects = [
   {
+    title: "Belleza",
+    slug: "belleza",
+    type: "Web Application",
+    description:
+      "A full-stack, multi-country beauty marketplace for Belleza: a Laravel REST API and admin panel behind a bilingual English and Arabic Next.js storefront, with CrediMax and BENEFIT payments, per-country currencies, gift cards, and 80+ brands.",
+    image: "Belleza.png",
+    tags: ["Laravel", "PHP", "REST API", "Next.js", "CrediMax", "BENEFIT", "Twilio"],
+    github: "#",
+    live: "https://staging.bellezabh.com/en/bh",
+    year: "2026",
+    category: "Full-Stack",
+    problem:
+      "Belleza sells to shoppers in several countries, each with its own currency, and customers pay through the two gateways people in Bahrain actually use. The business also needed a single back office to run the catalog, orders, purchasing, delivery and marketing, instead of spreading that work across separate tools.",
+    solution:
+      "Built a Laravel RESTful API as the single backend for the storefront and the admin panel, with country-aware pricing in local currencies, CrediMax and BENEFIT payment integration, Twilio OTP verification, guest checkout, country- and weight-based shipping charges, gift cards, and automatic back-in-stock emails. The bilingual Next.js storefront consumes the API, and admins and moderators run the whole operation from a role-based admin panel. The backend is modular so new countries, payment methods and features can be added without rewriting the core.",
+    features: [
+      "Laravel RESTful API serving the storefront and the admin panel",
+      "CrediMax (card) and BENEFIT payment gateway integration",
+      "Multi-country store: each country has its own currency, exchange rate and shipping rules, and any customer can buy any product",
+      "Twilio OTP verification, so customers confirm their phone number with a one-time code",
+      "Guest checkout, so anyone can place an order without creating an account",
+      "Gift cards that customers can buy and redeem at checkout",
+      "Shipping charges calculated by destination country and order weight, with a separate rate table for each country",
+      "Back-in-stock alerts: shoppers tap Notify Me on an out-of-stock product and automatically receive an email as soon as it is available again",
+      "Bilingual English / Arabic storefront built with Next.js, with country-scoped URLs such as /en/bh",
+      "Role-based admin panel for admins and moderators",
+      "Catalog management for products, brands, nested categories and attributes across 80+ brands",
+      "Orders, pending orders and abandoned-cart visibility, plus order and financial reporting with a sales dashboard",
+      "Purchasing workflow covering suppliers, shipments, purchase invoices, shipment expenses and receiving",
+      "Delivery agents, delivery settings and deliveries & settlements tracking",
+      "Marketing tools including discount coupons, general discounts, cashback rewards, newsletters, searched-keyword insights and affiliate requests",
+      "Content management for pages, blogs, sliders, promo banners, header messages and pop-ups, plus WhatsApp configuration",
+    ],
+  },
+  {
     title: "Rajshahi University Employee Profile System",
     slug: "ru-employee-profile-management-system",
     type: "Web Application",
@@ -131,6 +166,38 @@ export const projects = [
       "Integration API serving the exam result system, exam form fill-up, the university medical system, and hall automation — each token carrying its own permission set",
       "Full database backup facility — the system is the single authoritative copy, so scheduled complete snapshots are a standing requirement, not an add-on",
       "Activity log with actor attribution and field-level diffs",
+    ],
+  },
+  {
+    title: "Eduskandia",
+    slug: "eduskandia",
+    type: "Web Application",
+    description:
+      "A full-stack study-abroad platform for Eduskandia, a European education consultancy: a React frontend on a Laravel REST API where international students discover verified Nordic university programs, compare tuition and fees, apply, and track every step of their application from a personal dashboard.",
+    image: "EduSkandia.png",
+    tags: ["React", "Next.js", "Laravel", "PHP", "REST API", "Tailwind CSS"],
+    github: "#",
+    live: "https://eduskandia.com/",
+    year: "2026",
+    category: "Full-Stack",
+    problem:
+      "Students applying to Nordic universities from abroad face scattered program information, unclear tuition and fees, confusing document requirements, and no single place to see where their application stands. The consultancy needed one platform that presents verified programs transparently and guides each student from first shortlist to visa decision.",
+    solution:
+      "Built a Laravel RESTful API that holds programs, partner institutions, student accounts, applications and blog content, and a React frontend (Next.js, Tailwind CSS) that consumes it. Students search and filter the catalog, see every cost before applying, sign in to apply, and follow their application through clear stages on a dashboard, while the team publishes new programs and articles without touching code.",
+    features: [
+      "Laravel RESTful API serving programs, institutions, student accounts, applications and blog content to the React frontend",
+      "Program catalog of verified, English-taught programs from partner universities such as Aalto, KTH, Uppsala, DTU, NTNU, Chalmers and the University of Helsinki",
+      "Search by program or country, with filters for country and study level",
+      "Program pages showing tuition, duration, intakes, application fee, file opening fee, service charge and entry requirements",
+      "Sign in to apply straight from a program page",
+      "Student registration, sign-in and protected account area",
+      "Application dashboard that tracks each application through profile, documents and submission with a progress indicator",
+      "Document checklist guidance for transcripts, statements and references",
+      "Guided four-step journey: discover, prepare, apply & track, and plan your move with visa and pre-departure support",
+      "Homepage statistics for programs, partner institutions, countries and tuition-free options, pulled from the live catalog",
+      "Programs, institutions and blog posts managed through the backend, so new content goes live without a deploy",
+      "Blog with news, guides and funding categories, plus a monthly newsletter subscription",
+      "Responsive, animated interface with light and dark themes and Next.js image optimization",
     ],
   },
   {

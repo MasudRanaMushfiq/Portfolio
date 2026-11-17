@@ -10,7 +10,9 @@ const BASE = import.meta.env.BASE_URL;
 const projectImageMap = {
   "ru-employee-profile-management-system": ["ru-employee-profile", 640, 1225],
   "ru-student-management-system": ["rusms", 640, 1280],
+  belleza: ["belleza", 640, 1280],
   trylense: ["trylense", 640, 1184],
+  eduskandia: ["eduskandia", 640, 1280],
   "online-judge": ["online-judge", 640, 874],
   "laravel-blood-donation-backend": ["blood-donation-backend", 640, 1280],
   "ticket-booking-app": ["ticket-booking", 640, 1280],

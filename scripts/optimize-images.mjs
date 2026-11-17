@@ -28,7 +28,9 @@ const TARGETS = [640, 1280];
 const SOURCES = [
   ["RU Employee Profile.jpg", "ru-employee-profile"],
   ["RUSMS.png", "rusms"],
+  ["Belleza.png", "belleza"],
   ["TryLense.png", "trylense"],
+  ["EduSkandia.png", "eduskandia"],
   ["Online Judge.png", "online-judge"],
   ["Blood Donation Backend.png", "blood-donation-backend"],
   ["Ticket Booking Mobile App.png", "ticket-booking"],
